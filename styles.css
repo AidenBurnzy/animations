@@ -6,8 +6,8 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
+    height: 100vh;
 }
 
 #navbar-placeholder {
@@ -20,9 +20,9 @@ body {
 
 .section {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background: radial-gradient(circle at 20% 20%, rgba(87, 47, 255, 0.35), transparent 45%),
                 radial-gradient(circle at 80% 25%, rgba(0, 210, 255, 0.25), transparent 50%),
                 radial-gradient(circle at 50% 80%, rgba(255, 69, 112, 0.3), transparent 55%),
@@ -30,39 +30,43 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 0;
+    padding: 0;
 }
 
 .animation-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
-    gap: 56px;
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 1200px;
-    padding: clamp(40px, 10vw, 80px) clamp(24px, 6vw, 60px) 80px;
+    height: 100%;
+    padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 60px);
 }
 
 .hero-orbit {
-    --ai-orbit-radius: clamp(280px, 36vw, 400px);
-    --websites-offset: clamp(120px, 16vw, 220px);
-    --ai-scale: 0.7;
-    --ai-core-scale: 0.74;
-    --ai-focus-scale: 1.12;
-    --ai-focus-core-scale: 1.02;
-    --ai-focus-lift: -18px;
+    --ai-orbit-radius: clamp(240px, 30vw, 360px);
+    --websites-offset: clamp(100px, 14vw, 180px);
+    --ai-scale: 0.65;
+    --ai-core-scale: 0.68;
+    --ai-focus-scale: 1.08;
+    --ai-focus-core-scale: 0.98;
+    --ai-focus-lift: -12px;
     position: relative;
-    width: min(100%, 820px);
+    width: min(90%, 740px);
+    max-width: 740px;
     aspect-ratio: 1.45;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
     isolation: isolate;
-    padding: clamp(36px, 8vw, 64px);
+    padding: clamp(24px, 5vw, 48px);
+    flex-shrink: 1;
+    margin: 0 auto;
+    flex-grow: 0;
 }
 
 .hero-orbit.show-ai {
@@ -85,7 +89,7 @@ body {
 
 .hero-backdrop {
     position: relative;
-    width: clamp(260px, 34vw, 400px);
+    width: clamp(220px, 28vw, 340px);
     aspect-ratio: 1;
     display: grid;
     place-items: center;
@@ -107,7 +111,7 @@ body {
 }
 
 .hero-orbit.show-ai .hero-backdrop {
-    transform: translate(calc(-1 * var(--websites-offset) - 60px), -60px) scale(0.44);
+    transform: translate(calc(-1 * var(--websites-offset) - 50px), -50px) scale(0.38);
     opacity: 0.5;
     visibility: visible;
 }
@@ -146,9 +150,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: clamp(5rem, 10vw, 12.5rem);
+    font-size: clamp(4rem, 8vw, 10rem);
     font-weight: 800;
-    letter-spacing: clamp(0.28rem, 0.8vw, 0.6rem);
+    letter-spacing: clamp(0.24rem, 0.6vw, 0.5rem);
     color: #fff;
     text-transform: uppercase;
     text-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), 0 0 45px rgba(140, 120, 255, 0.45);
@@ -167,7 +171,7 @@ body {
 }
 
 .text-ai {
-    transform: translate(calc(-50% + var(--ai-orbit-radius)), calc(-50% + 220px)) scale(var(--ai-scale));
+    transform: translate(calc(-50% + var(--ai-orbit-radius)), calc(-50% + 180px)) scale(var(--ai-scale));
     opacity: 0.78;
     z-index: 2;
 }
@@ -176,24 +180,24 @@ body {
     transform: translate(-50%, calc(-50% + var(--ai-focus-lift))) scale(var(--ai-scale));
     opacity: 1;
     z-index: 5;
-    letter-spacing: clamp(0.28rem, 0.7vw, 0.6rem);
+    letter-spacing: clamp(0.24rem, 0.6vw, 0.5rem);
 }
 
 .hero-orbit.show-ai .text-websites {
-    transform: translate(calc(-50% - var(--websites-offset) - 60px), calc(-50% - 60px)) scale(0.44);
+    transform: translate(calc(-50% - var(--websites-offset) - 50px), calc(-50% - 50px)) scale(0.4);
     opacity: 0.5;
-    letter-spacing: clamp(0.22rem, 0.5vw, 0.4rem);
+    letter-spacing: clamp(0.2rem, 0.4vw, 0.35rem);
 }
 
 .ai-core-visual {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: clamp(240px, 34vw, 380px);
+    width: clamp(200px, 28vw, 320px);
     aspect-ratio: 1;
     display: grid;
     place-items: center;
-    transform: translate(calc(-50% + var(--ai-orbit-radius)), calc(-50% + 220px)) scale(var(--ai-core-scale));
+    transform: translate(calc(-50% + var(--ai-orbit-radius)), calc(-50% + 180px)) scale(var(--ai-core-scale));
     opacity: 0.6;
     pointer-events: none;
     z-index: 1;
@@ -203,11 +207,11 @@ body {
 }
 
 .ai-core-visual .neural-core {
-    width: clamp(190px, 28vw, 320px);
+    width: clamp(160px, 24vw, 280px);
 }
 
 .hero-orbit.show-ai .ai-core-visual {
-    transform: translate(-50%, calc(-50% + var(--ai-focus-lift) + 8px)) scale(var(--ai-focus-core-scale));
+    transform: translate(-50%, calc(-50% + var(--ai-focus-lift) + 6px)) scale(var(--ai-focus-core-scale));
     opacity: 0.96;
     visibility: visible;
     z-index: 4;
@@ -215,11 +219,12 @@ body {
 }
 
 .info-panel {
-    width: min(100%, 640px);
+    width: min(100%, 580px);
     position: relative;
     z-index: 5;
     justify-items: center;
-    min-height: 280px;
+    min-height: 240px;
+    flex-shrink: 0;
 }
 
 .info-card {
@@ -230,8 +235,8 @@ body {
     width: 100%;
     background: rgba(12, 10, 28, 0.65);
     border: 1px solid rgba(120, 120, 255, 0.18);
-    border-radius: 28px;
-    padding: 32px clamp(24px, 5vw, 48px);
+    border-radius: 24px;
+    padding: 28px clamp(20px, 4vw, 40px);
     text-align: center;
     box-shadow: 0 30px 65px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(26px);
@@ -252,34 +257,34 @@ body {
 }
 
 .info-card h3 {
-    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
     font-weight: 600;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.18rem;
 }
 
 .info-card p {
-    line-height: 1.7;
-    font-size: 1rem;
-    margin-bottom: 24px;
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    margin-bottom: 20px;
     color: rgba(232, 237, 255, 0.88);
 }
 
 .cta-button {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
-    padding: 14px 38px;
+    padding: 12px 32px;
     background: linear-gradient(135deg, rgba(100, 140, 255, 0.38), rgba(0, 220, 255, 0.2));
     color: #fff;
     text-decoration: none;
     border-radius: 999px;
     font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.16rem;
+    font-size: 0.88rem;
+    letter-spacing: 0.14rem;
     text-transform: uppercase;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.35);
@@ -296,8 +301,10 @@ body {
     background: rgba(10, 16, 38, 0.58);
     border: 1px solid rgba(255, 255, 255, 0.28);
     color: #fff;
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -309,6 +316,263 @@ body {
     backdrop-filter: blur(16px);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
     touch-action: manipulation;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.info-panel {
+    width: min(100%, 580px);
+    position: relative;
+    z-index: 5;
+    justify-items: center;
+    min-height: clamp(180px, 20vh, 240px);
+    flex-shrink: 0;
+}
+
+.info-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(12, 10, 28, 0.65);
+    border: 1px solid rgba(120, 120, 255, 0.18);
+    border-radius: 24px;
+    padding: clamp(20px, 2.5vh, 28px) clamp(20px, 4vw, 40px);
+    text-align: center;
+    box-shadow: 0 30px 65px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(26px);
+    color: rgba(255, 255, 255, 0.88);
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.9s ease, transform 0.9s ease, visibility 0s linear 0.9s;
+}
+
+.info-card.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s, 0s, 0s;
+}
+
+.info-card h3 {
+    font-size: clamp(1.1rem, 2vh, 1.5rem);
+    font-weight: 600;
+    margin-bottom: clamp(8px, 1vh, 12px);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.18rem;
+}
+
+.info-card p {
+    line-height: 1.5;
+    font-size: clamp(0.85rem, 1.6vh, 1rem);
+    margin-bottom: clamp(14px, 2vh, 20px);
+    color: rgba(232, 237, 255, 0.88);
+}
+
+@media (max-height: 700px) {
+    .animation-container {
+        padding: clamp(8px, 1.2vh, 12px) clamp(16px, 2.5vw, 40px);
+    }
+    
+    .hero-orbit {
+        padding: clamp(12px, 2vw, 20px);
+        width: min(85%, 600px);
+        max-width: 600px;
+    }
+    
+    .info-panel {
+        min-height: clamp(130px, 14vh, 160px);
+    }
+    
+    .info-card {
+        padding: clamp(14px, 1.8vh, 18px) clamp(16px, 3vw, 24px);
+        border-radius: 18px;
+    }
+    
+    .info-card h3 {
+        font-size: clamp(0.95rem, 1.6vh, 1.15rem);
+        margin-bottom: clamp(5px, 0.7vh, 8px);
+        letter-spacing: 0.12rem;
+    }
+    
+    .info-card p {
+        font-size: clamp(0.75rem, 1.3vh, 0.85rem);
+        margin-bottom: clamp(10px, 1.4vh, 14px);
+        line-height: 1.4;
+    }
+    
+    .cta-button {
+        padding: 9px 22px;
+        font-size: 0.75rem;
+        letter-spacing: 0.11rem;
+    }
+    
+    .arrow {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .arrow svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .text {
+        font-size: clamp(2.8rem, 6vw, 6.5rem);
+    }
+    
+    .hero-backdrop {
+        width: clamp(180px, 24vw, 280px);
+    }
+    
+    .holo-orb {
+        width: clamp(150px, 22vw, 240px);
+    }
+    
+    .ai-core-visual {
+        width: clamp(170px, 24vw, 280px);
+    }
+}
+
+@media (max-height: 600px) {
+    .animation-container {
+        padding: clamp(6px, 0.8vh, 10px) clamp(12px, 2vw, 32px);
+    }
+    
+    .hero-orbit {
+        padding: clamp(10px, 1.5vw, 16px);
+        width: min(80%, 500px);
+        max-width: 500px;
+    }
+    
+    .info-panel {
+        min-height: clamp(110px, 12vh, 130px);
+    }
+    
+    .info-card {
+        padding: 10px 14px;
+        border-radius: 16px;
+    }
+    
+    .info-card h3 {
+        font-size: clamp(0.85rem, 1.4vh, 1rem);
+        margin-bottom: 4px;
+        letter-spacing: 0.1rem;
+    }
+    
+    .info-card p {
+        font-size: clamp(0.7rem, 1.1vh, 0.78rem);
+        margin-bottom: 8px;
+        line-height: 1.35;
+    }
+    
+    .cta-button {
+        padding: 7px 18px;
+        font-size: 0.7rem;
+        letter-spacing: 0.1rem;
+    }
+    
+    .arrow {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    
+    .arrow svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .text {
+        font-size: clamp(2.4rem, 5.5vw, 5.5rem);
+    }
+    
+    .hero-backdrop {
+        width: clamp(160px, 22vw, 240px);
+    }
+    
+    .holo-orb {
+        width: clamp(130px, 20vw, 200px);
+    }
+    
+    .ai-core-visual {
+        width: clamp(150px, 22vw, 240px);
+    }
+}
+
+@media (max-height: 500px) {
+    .animation-container {
+        padding: 4px clamp(10px, 1.5vw, 24px);
+    }
+    
+    .hero-orbit {
+        padding: 8px;
+        width: min(75%, 420px);
+        max-width: 420px;
+    }
+    
+    .info-panel {
+        min-height: clamp(90px, 10vh, 110px);
+    }
+    
+    .info-card {
+        padding: 8px 12px;
+        border-radius: 14px;
+    }
+    
+    .info-card h3 {
+        font-size: clamp(0.75rem, 1.2vh, 0.9rem);
+        margin-bottom: 3px;
+        letter-spacing: 0.08rem;
+    }
+    
+    .info-card p {
+        font-size: clamp(0.65rem, 1vh, 0.72rem);
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+    
+    .cta-button {
+        padding: 6px 14px;
+        font-size: 0.65rem;
+        letter-spacing: 0.08rem;
+    }
+    
+    .arrow {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+    
+    .arrow svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .text {
+        font-size: clamp(2rem, 5vw, 4.5rem);
+    }
+    
+    .hero-backdrop {
+        width: clamp(140px, 20vw, 200px);
+    }
+    
+    .holo-orb {
+        width: clamp(110px, 18vw, 170px);
+    }
+    
+    .ai-core-visual {
+        width: clamp(130px, 20vw, 200px);
+    }
 }
 
 .arrow:hover {
@@ -339,7 +603,7 @@ body {
 
 .holo-orb {
     position: relative;
-    width: clamp(220px, 32vw, 360px);
+    width: clamp(180px, 26vw, 300px);
     aspect-ratio: 1;
     display: flex;
     align-items: center;
