@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #f5f6ff;
+    background: radial-gradient(circle at 20% 20%, rgba(87, 47, 255, 0.35), transparent 45%),
+                radial-gradient(circle at 80% 25%, rgba(0, 210, 255, 0.25), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(255, 69, 112, 0.3), transparent 55%),
+                #04010f;
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+}
+
+.page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(40px, 8vw, 120px);
+}
+
+.content {
+    text-align: center;
+    max-width: 680px;
+    backdrop-filter: blur(12px);
+    background: linear-gradient(130deg, rgba(18, 10, 40, 0.35), rgba(5, 8, 45, 0.2));
+    border: 1px solid rgba(160, 180, 255, 0.12);
+    border-radius: 32px;
+    padding: clamp(36px, 6vw, 80px);
+    box-shadow: 0 30px 80px rgba(5, 15, 45, 0.55);
+}
+
+.content h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    margin-bottom: clamp(16px, 4vw, 36px);
+    text-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), 0 0 45px rgba(120, 90, 255, 0.4);
+}
+
+.lead {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.6;
+    color: rgba(226, 232, 255, 0.85);
+    margin-bottom: clamp(28px, 5vw, 48px);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #e8ecff;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: linear-gradient(135deg, rgba(28, 12, 65, 0.7), rgba(110, 70, 220, 0.45));
+    box-shadow: 0 15px 40px rgba(12, 5, 45, 0.55);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-link::before {
+    content: "←";
+    font-size: 1.3rem;
+    transform: translateY(-1px);
+}
+
+.back-link:hover,
+.back-link:focus-visible,
+.back-link.active {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 55px rgba(16, 10, 55, 0.6);
+}
+
+.back-link:focus-visible {
+    outline: 3px solid rgba(160, 220, 255, 0.6);
+    outline-offset: 6px;
+}
+
+.back-link.active {
+    transform: translateY(-6px) scale(1.03);
+}
