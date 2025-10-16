@@ -3,71 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
+    <title>Orbital Animation</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="navStyles.css">
 </head>
 <body>
     <div id="navbar-placeholder"></div>
+    
     <section class="section">
         <div class="animation-container">
-            <div class="content-wrapper">
-                <div class="slider" id="slider">
-                    <!-- Websites Slide -->
-                    <div class="slide active" data-slide="websites">
-                        <div class="icon">
-                            <div class="holo-orb">
-                                <div class="orb"></div>
-                                <div class="ring ring-1"></div>
-                                <div class="ring ring-2"></div>
-                                <div class="ring ring-3"></div>
-                                <div class="glow"></div>
-                                <div class="particle particle-1"></div>
-                                <div class="particle particle-2"></div>
-                            </div>
-                        </div>
-                        <h1 class="text" data-target="websites">WEBSITES</h1>
-                        
-                        <div class="description-container" id="websites-desc">
-                            <div class="description">
-                                <h3>Custom Websites</h3>
-                                <p>We blend personalized designs with intuitive UI patterns, ensuring every page feels unmistakably yours while guiding visitors toward action.</p>
-                                <a href="websites.html" class="cta-button">Explore Web Services -></a>
-                            </div>
-                        </div>
+            <div class="hero-orbit" id="heroOrbit">
+                <div class="hero-backdrop">
+                    <div class="holo-orb">
+                        <div class="orb"></div>
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+                        <div class="ring ring-3"></div>
+                        <div class="glow"></div>
+                        <div class="particle particle-1"></div>
+                        <div class="particle particle-2"></div>
                     </div>
+                    <div class="orbit-ring orbit-ring-outer"></div>
+                    <div class="orbit-ring orbit-ring-inner"></div>
+                </div>
 
-                    <!-- AI Slide -->
-                    <div class="slide" data-slide="ai">
-                        <div class="icon ai-icon">
-                            <div class="neural-core">
-                                <div class="core-shell"></div>
-                                <div class="core-shell overlay"></div>
-                                <div class="core-grid grid-1"></div>
-                                <div class="core-grid grid-2"></div>
-                                <div class="halo halo-outer"></div>
-                                <div class="halo halo-inner"></div>
-                                <div class="beam beam-1"></div>
-                                <div class="beam beam-2"></div>
-                                <div class="spark spark-1"></div>
-                                <div class="spark spark-2"></div>
-                                <div class="spark spark-3"></div>
-                            </div>
-                        </div>
-                        <h1 class="text" data-target="ai">AUCTUS AI</h1>
-                        
-                        <div class="description-container" id="ai-desc">
-                            <div class="description">
-                                <h3>AI Solutions</h3>
-                                <p>We translate complex workflows into thoughtful automations, pairing machine intelligence with human oversight so your team can focus on what matters.</p>
-                                <a href="ai.html" class="cta-button">Explore AI Solutions -></a>
-                            </div>
-                        </div>
+                <h1 class="text text-websites" data-target="websites">WEBSITES</h1>
+                
+                <div class="ai-core-visual">
+                    <div class="neural-core">
+                        <div class="core-shell"></div>
+                        <div class="core-shell overlay"></div>
+                        <div class="core-grid grid-1"></div>
+                        <div class="core-grid grid-2"></div>
+                        <div class="halo halo-outer"></div>
+                        <div class="halo halo-inner"></div>
+                        <div class="beam beam-1"></div>
+                        <div class="beam beam-2"></div>
+                        <div class="spark spark-1"></div>
+                        <div class="spark spark-2"></div>
+                        <div class="spark spark-3"></div>
                     </div>
                 </div>
+                
+                <h1 class="text text-ai" data-target="ai">AI</h1>
             </div>
 
-            <button class="arrow arrow-right" id="nextBtn">
+            <div class="info-panel">
+                <article class="info-card active" id="websites-desc">
+                    <h3>Custom Websites</h3>
+                    <p>We blend personalized designs with intuitive UI patterns, ensuring every page feels unmistakably yours while guiding visitors toward action.</p>
+                    <a href="#" class="cta-button">Explore Web Services →</a>
+                </article>
+
+                <article class="info-card" id="ai-desc">
+                    <h3>AI Solutions</h3>
+                    <p>We translate complex workflows into thoughtful automations, pairing machine intelligence with human oversight so your team can focus on what matters.</p>
+                    <a href="#" class="cta-button">Explore AI Solutions →</a>
+                </article>
+            </div>
+
+            <button class="arrow" id="nextBtn" type="button">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
