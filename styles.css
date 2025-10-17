@@ -119,11 +119,13 @@ body {
 .hero-orbit.show-auctus .hero-backdrop {
     transform: translate(calc(-50% - var(--auctus-orbit-radius) - 100px), calc(-50% + 180px)) scale(0.5);
     opacity: 0.4;
+    z-index: 1;
 }
 
 .hero-orbit.show-ai .hero-backdrop {
     transform: translate(calc(-50% - var(--auctus-orbit-radius) - 100px), calc(-50% + 180px)) scale(0.5);
     opacity: 0.4;
+    z-index: 1;
 }
 
 .hero-orbit.show-websites .hero-backdrop {
@@ -182,8 +184,8 @@ body {
     text-transform: uppercase;
     text-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), 0 0 45px rgba(140, 120, 255, 0.45);
     mix-blend-mode: screen;
-    display: inline-flex;
-    gap: 0;
+    display: inline-block;
+    white-space: nowrap;
     pointer-events: auto;
     cursor: pointer;
     z-index: 3;
@@ -201,11 +203,13 @@ body {
 .hero-orbit.show-auctus .text-websites {
     transform: translate(calc(-50% - var(--auctus-orbit-radius) - 100px), calc(-50% + 180px)) scale(0.5);
     opacity: 0.4;
+    z-index: 2;
 }
 
 .hero-orbit.show-ai .text-websites {
     transform: translate(calc(-50% - var(--auctus-orbit-radius) - 100px), calc(-50% + 180px)) scale(0.5);
     opacity: 0.4;
+    z-index: 2;
 }
 
 .hero-orbit.show-websites .text-websites {
@@ -233,17 +237,20 @@ body {
     transform: translate(calc(-50% - var(--websites-offset) - 50px), calc(-50% - 50px)) scale(0.4);
     opacity: 0.5;
     letter-spacing: clamp(0.2rem, 0.4vw, 0.35rem);
+    z-index: 2;
 }
 
 .hero-orbit.show-auctus .text-ai {
     transform: translate(calc(-50% + var(--ai-orbit-radius) + 100px), calc(-50% + 180px)) scale(0.5);
     opacity: 0.4;
+    z-index: 2;
 }
 
 .hero-orbit.show-websites .text-ai {
-    transform: translate(calc(-50% + var(--ai-orbit-radius) + 50px), calc(-50% - 80px)) scale(0.5);
+    transform: translate(calc(-50% + var(--ai-orbit-radius) + 50px), calc(-50% + 120px)) scale(0.5);
     opacity: 0.6;
     letter-spacing: clamp(0.2rem, 0.4vw, 0.35rem);
+    z-index: 2;
 }
 
 /* AUCTUS text */
@@ -260,9 +267,10 @@ body {
 }
 
 .hero-orbit.show-websites .text-auctus {
-    transform: translate(calc(-50% - var(--ai-orbit-radius) - 50px), calc(-50% - 80px)) scale(0.5);
+    transform: translate(calc(-50% - var(--ai-orbit-radius) - 50px), calc(-50% + 120px)) scale(0.5);
     opacity: 0.6;
     letter-spacing: clamp(0.2rem, 0.4vw, 0.35rem);
+    z-index: 2;
 }
 
 /* AI core visual */
@@ -298,11 +306,13 @@ body {
 .hero-orbit.show-auctus .ai-core-visual {
     transform: translate(calc(-50% + var(--ai-orbit-radius) + 100px), calc(-50% + 180px)) scale(0.5);
     opacity: 0.3;
+    z-index: 1;
 }
 
 .hero-orbit.show-websites .ai-core-visual {
-    transform: translate(calc(-50% + var(--ai-orbit-radius) + 50px), calc(-50% - 80px)) scale(0.5);
+    transform: translate(calc(-50% + var(--ai-orbit-radius) + 50px), calc(-50% + 120px)) scale(0.5);
     opacity: 0.6;
+    z-index: 1;
 }
 
 /* AUCTUS core visual */
@@ -338,11 +348,13 @@ body {
 .hero-orbit.show-ai .auctus-core-visual {
     transform: translate(calc(-50% - var(--websites-offset) - 50px), calc(-50% - 50px)) scale(0.4);
     opacity: 0.5;
+    z-index: 1;
 }
 
 .hero-orbit.show-websites .auctus-core-visual {
-    transform: translate(calc(-50% - var(--ai-orbit-radius) - 50px), calc(-50% - 80px)) scale(0.5);
+    transform: translate(calc(-50% - var(--ai-orbit-radius) - 50px), calc(-50% + 120px)) scale(0.5);
     opacity: 0.6;
+    z-index: 1;
 }
 
 .brand-core {
