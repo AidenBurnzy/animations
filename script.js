@@ -3,18 +3,32 @@ const toggleBtn = document.getElementById('nextBtn');
 const textElements = Array.from(document.querySelectorAll('.text'));
 const infoCards = {
     websites: document.getElementById('websites-desc'),
-    ai: document.getElementById('ai-desc')
+    ai: document.getElementById('ai-desc'),
+    auctus: document.getElementById('auctus-desc')
 };
 
-let activeFocus = 'websites';
+// Three-state cycle: auctus -> websites -> ai -> auctus
+const states = ['auctus', 'websites', 'ai'];
+let currentStateIndex = 0;
+let activeFocus = states[currentStateIndex];
 
 function applyFocusState(target) {
+    console.log('Applying focus state:', target); // Debug log
+    
     if (heroOrbit) {
-        heroOrbit.classList.toggle('show-ai', target === 'ai');
+        heroOrbit.classList.remove('show-ai', 'show-auctus', 'show-websites');
+        if (target === 'ai') {
+            heroOrbit.classList.add('show-ai');
+        } else if (target === 'auctus') {
+            heroOrbit.classList.add('show-auctus');
+        } else if (target === 'websites') {
+            heroOrbit.classList.add('show-websites');
+        }
+        console.log('Hero orbit classes:', heroOrbit.className); // Debug log
     }
 
     if (toggleBtn) {
-        toggleBtn.classList.toggle('is-active', target === 'ai');
+        toggleBtn.classList.toggle('is-active', target !== 'auctus');
     }
 
     Object.entries(infoCards).forEach(([key, card]) => {
@@ -25,7 +39,8 @@ function applyFocusState(target) {
 }
 
 function toggleFocus() {
-    activeFocus = activeFocus === 'websites' ? 'ai' : 'websites';
+    currentStateIndex = (currentStateIndex + 1) % states.length;
+    activeFocus = states[currentStateIndex];
     applyFocusState(activeFocus);
 }
 
@@ -38,9 +53,11 @@ textElements.forEach((textEl) => {
         const target = this.getAttribute('data-target');
         if (target) {
             activeFocus = target;
+            currentStateIndex = states.indexOf(target);
             applyFocusState(target);
         }
     });
 });
 
+// Apply initial state
 applyFocusState(activeFocus);
