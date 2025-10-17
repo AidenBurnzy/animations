@@ -32,6 +32,80 @@ document.addEventListener('DOMContentLoaded', () => {
         createParticle();
     }
 
+    // Showcase Slider Functionality
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const arrowPrev = document.querySelector('.arrow-prev');
+    const arrowNext = document.querySelector('.arrow-next');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function goToSlide(index, direction = 'next') {
+        // Remove active class from current slide
+        slides[currentSlide].classList.remove('active');
+        indicators[currentSlide].classList.remove('active');
+        
+        // Add exit animation
+        if (direction === 'next') {
+            slides[currentSlide].classList.add('exit-left');
+        } else {
+            slides[currentSlide].classList.add('exit-right');
+        }
+        
+        // Remove exit animation after transition
+        setTimeout(() => {
+            slides[currentSlide].classList.remove('exit-left', 'exit-right');
+        }, 800);
+        
+        // Update current slide
+        currentSlide = index;
+        
+        // Add active class to new slide
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % totalSlides;
+        goToSlide(nextIndex, 'next');
+    }
+
+    function prevSlide() {
+        const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+        goToSlide(prevIndex, 'prev');
+    }
+
+    // Arrow navigation
+    if (arrowNext) {
+        arrowNext.addEventListener('click', nextSlide);
+    }
+    
+    if (arrowPrev) {
+        arrowPrev.addEventListener('click', prevSlide);
+    }
+
+    // Indicator navigation
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            if (index !== currentSlide) {
+                const direction = index > currentSlide ? 'next' : 'prev';
+                goToSlide(index, direction);
+            }
+        });
+    });
+
+    // Keyboard navigation for slider
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+        }
+    });
+
+    // Auto-advance slider (optional - uncomment to enable)
+    // setInterval(nextSlide, 5000);
+
     // Theme Toggle
     const themeButtons = document.querySelectorAll('.theme-btn');
     const themeMockups = document.querySelectorAll('.theme-mockup');
