@@ -3,19 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Websites</title>
+    <title>Website Design & Development - Auctus Ventures</title>
     <link rel="stylesheet" href="websites.css">
     <link rel="stylesheet" href="navStyles.css">
 </head>
 <body>
     <div id="navbar-placeholder"></div>
-    <section class="page">
-        <div class="content">
-            <h1>Websites</h1>
-            <p class="lead">Exploring immersive web experiences that merge sharp aesthetics with futuristic interactions.</p>
-            <a class="back-link" href="index.html">Back to Showcase</a>
+    
+    <!-- Animated Background Particles -->
+    <div class="particles-container" id="particles"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">✦</span>
+                <span>Web Development</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">We Build</span>
+                <span class="title-line gradient-text">Digital Experiences</span>
+            </h1>
+            <p class="hero-subtitle">From concept to launch, we craft custom websites that combine stunning design with powerful functionality.</p>
+        </div>
+        
+        <div class="floating-visual">
+            <div class="visual-orb orb-1"></div>
+            <div class="visual-orb orb-2"></div>
+            <div class="visual-orb orb-3"></div>
+            <div class="code-window">
+                <div class="window-header">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="code-content">
+                    <div class="code-line"><span class="code-tag">&lt;div</span> <span class="code-attr">class=</span><span class="code-string">"future"</span><span class="code-tag">&gt;</span></div>
+                    <div class="code-line indent"><span class="code-tag">&lt;h1&gt;</span>Your Vision<span class="code-tag">&lt;/h1&gt;</span></div>
+                    <div class="code-line indent"><span class="code-tag">&lt;p&gt;</span>Brought to Life<span class="code-tag">&lt;/p&gt;</span></div>
+                    <div class="code-line"><span class="code-tag">&lt;/div&gt;</span></div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2 class="section-title">Our Complete Process</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>Design & Develop</h3>
+                <p>We create pixel-perfect designs and transform them into clean, efficient code that works flawlessly across all devices.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3>Host & Maintain</h3>
+                <p>Lightning-fast hosting with 99.9% uptime. We handle all technical maintenance so you can focus on your business.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                </div>
+                <h3>Launch & Grow</h3>
+                <p>Strategic launch planning and ongoing optimization to ensure your website continues to perform and evolve with your needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme Showcase Section -->
+    <section class="showcase-section">
+        <h2 class="section-title">Design Themes We Master</h2>
+        <p class="section-subtitle">Every brand is unique. Explore the different styles we can bring to your project.</p>
+        
+        <div class="theme-toggle">
+            <button class="theme-btn active" data-theme="corporate">Corporate</button>
+            <button class="theme-btn" data-theme="creative">Creative</button>
+            <button class="theme-btn" data-theme="minimal">Minimal</button>
+            <button class="theme-btn" data-theme="tech">Tech</button>
+        </div>
+
+        <div class="theme-preview">
+            <div class="preview-container" id="themePreview">
+                <!-- Corporate Theme -->
+                <div class="theme-mockup active" data-theme="corporate">
+                    <div class="mockup-browser">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="mockup-content corporate-theme">
+                            <div class="mock-nav"></div>
+                            <div class="mock-hero">
+                                <div class="mock-text-block"></div>
+                                <div class="mock-text-line"></div>
+                                <div class="mock-button"></div>
+                            </div>
+                            <div class="mock-cards">
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-description">
+                        <h3>Corporate</h3>
+                        <p>Professional, trustworthy, and polished. Perfect for established businesses, law firms, and financial institutions.</p>
+                    </div>
+                </div>
+
+                <!-- Creative Theme -->
+                <div class="theme-mockup" data-theme="creative">
+                    <div class="mockup-browser">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="mockup-content creative-theme">
+                            <div class="mock-nav"></div>
+                            <div class="mock-hero creative-hero">
+                                <div class="creative-circle"></div>
+                                <div class="mock-text-block"></div>
+                            </div>
+                            <div class="mock-cards creative-cards">
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-description">
+                        <h3>Creative</h3>
+                        <p>Bold, artistic, and expressive. Ideal for agencies, artists, and brands that want to make a statement.</p>
+                    </div>
+                </div>
+
+                <!-- Minimal Theme -->
+                <div class="theme-mockup" data-theme="minimal">
+                    <div class="mockup-browser">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="mockup-content minimal-theme">
+                            <div class="mock-nav minimal-nav"></div>
+                            <div class="mock-hero minimal-hero">
+                                <div class="mock-text-block"></div>
+                                <div class="mock-text-line short"></div>
+                            </div>
+                            <div class="minimal-grid">
+                                <div class="minimal-block"></div>
+                                <div class="minimal-block"></div>
+                                <div class="minimal-block"></div>
+                                <div class="minimal-block"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-description">
+                        <h3>Minimal</h3>
+                        <p>Clean, elegant, and focused. Perfect for portfolios, luxury brands, and content-first experiences.</p>
+                    </div>
+                </div>
+
+                <!-- Tech Theme -->
+                <div class="theme-mockup" data-theme="tech">
+                    <div class="mockup-browser">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="mockup-content tech-theme">
+                            <div class="mock-nav"></div>
+                            <div class="tech-grid">
+                                <div class="tech-block"></div>
+                                <div class="tech-block"></div>
+                                <div class="tech-block"></div>
+                            </div>
+                            <div class="tech-terminal">
+                                <div class="terminal-line"></div>
+                                <div class="terminal-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-description">
+                        <h3>Tech</h3>
+                        <p>Futuristic, dynamic, and cutting-edge. Built for SaaS, startups, and technology companies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2 class="section-title">Trusted By Forward-Thinking Companies</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Auctus transformed our online presence completely. Our new website not only looks incredible but has increased our conversion rate by 240%.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <span>SM</span>
+                    </div>
+                    <div class="author-info">
+                        <h4>Sarah Martinez</h4>
+                        <p>CEO, TechFlow Solutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">The attention to detail and creative vision they brought to our project was outstanding. They understood our brand better than we did.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <span>JC</span>
+                    </div>
+                    <div class="author-info">
+                        <h4>James Chen</h4>
+                        <p>Founder, Elevate Digital</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Professional, responsive, and incredibly talented. They delivered ahead of schedule and the results speak for themselves.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <span>ER</span>
+                    </div>
+                    <div class="author-info">
+                        <h4>Emily Rodriguez</h4>
+                        <p>Marketing Director, Pinnacle Brands</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">From the first consultation to launch day, the experience was seamless. Our website is now a powerful tool that works as hard as we do.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <span>DK</span>
+                    </div>
+                    <div class="author-info">
+                        <h4>David Kim</h4>
+                        <p>Owner, Quantum Ventures</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">They didn't just build us a website, they built us a competitive advantage. The design is stunning and the performance is flawless.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <span>AL</span>
+                    </div>
+                    <div class="author-info">
+                        <h4>Alex Thompson</h4>
+                        <p>VP of Operations, Nexus Corp</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Working with Auctus was a game-changer. Their expertise in both design and development created a website that truly represents our vision.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <span>MP</span>
+                    </div>
+                    <div class="author-info">
+                        <h4>Maria Patel</h4>
+                        <p>Co-Founder, Horizon Innovations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Elevate Your Online Presence?</h2>
+            <p>Let's create something extraordinary together.</p>
+            <div class="cta-buttons">
+                <a href="mailto:hello@auctusventures.com" class="cta-primary">Start Your Project</a>
+                <a href="index.html" class="cta-secondary">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
     <script defer src="navbar.js"></script>
     <script src="websites.js"></script>
 </body>
