@@ -7,9 +7,9 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     color: #f2f4ff;
-    background: radial-gradient(circle at 15% 15%, rgba(255, 61, 2, 0.582), transparent 45%),
-                radial-gradient(circle at 85% 20%, rgba(255, 0, 212, 0.5), transparent 50%),
-                radial-gradient(circle at 50% 85%, rgba(255, 40, 165, 0.658), transparent 55%),
+    background: radial-gradient(circle at 15% 15%, rgba(30, 7, 37, 0.651), transparent 45%),
+                radial-gradient(circle at 85% 20%, rgba(255, 133, 218, 0.733), transparent 50%),
+                radial-gradient(circle at 50% 85%, rgba(255, 0, 149, 0.658), transparent 55%),
                 #0a0614;
     min-height: 100vh;
     overflow-x: hidden;
@@ -111,13 +111,13 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #b87cff, #59c3ff, #ff59b4);
+    background: linear-gradient(135deg, #2dceff, #00ccff, #28bbff);
     background-size: 200% 200%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: slide-up 0.8s ease-out 0.4s forwards, gradient-shift 4s ease infinite;
-    filter: drop-shadow(0 0 30px rgba(155, 89, 255, 0.4));
+    filter: drop-shadow(0 0 30px rgba(247, 14, 255, 0.4));
 }
 
 @keyframes slide-up {
