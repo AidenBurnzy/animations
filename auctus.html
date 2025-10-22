@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Auctus Ventures</title>
+    <link rel="stylesheet" href="auctus.css">
+    <link rel="stylesheet" href="navStyles.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    
+    <!-- Animated Background Canvas -->
+    <canvas id="networkCanvas"></canvas>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">⚡</span>
+                <span>Est. 2024</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">Power Everything,</span>
+                <span class="title-line gradient-text">With Auctus</span>
+            </h1>
+            <p class="hero-subtitle">We're a forward-thinking digital agency specializing in cutting-edge web development and AI solutions that transform businesses.</p>
+        </div>
+        
+        <div class="floating-astronaut">
+            <div class="astronaut-container">
+                <svg class="astronaut" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Tether/rope -->
+                    <path class="tether" d="M 100 20 Q 120 -30 140 -80" stroke="rgba(200, 200, 255, 0.3)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    
+                    <!-- Body -->
+                    <ellipse cx="100" cy="180" rx="35" ry="45" fill="url(#bodyGradient)"/>
+                    
+                    <!-- Arms -->
+                    <g class="arm-left">
+                        <ellipse cx="70" cy="165" rx="12" ry="35" fill="url(#bodyGradient)" transform="rotate(-20 70 165)"/>
+                        <circle cx="65" cy="145" r="10" fill="url(#gloveGradient)"/>
+                    </g>
+                    <g class="arm-right wave">
+                        <ellipse cx="130" cy="155" rx="12" ry="35" fill="url(#bodyGradient)" transform="rotate(25 130 155)"/>
+                        <circle cx="138" cy="135" r="10" fill="url(#gloveGradient)"/>
+                    </g>
+                    
+                    <!-- Legs -->
+                    <ellipse cx="85" cy="215" rx="10" ry="30" fill="url(#bodyGradient)" transform="rotate(5 85 215)"/>
+                    <ellipse cx="115" cy="215" rx="10" ry="30" fill="url(#bodyGradient)" transform="rotate(-5 115 215)"/>
+                    <ellipse cx="85" cy="245" rx="12" ry="8" fill="url(#bootGradient)"/>
+                    <ellipse cx="115" cy="245" rx="12" ry="8" fill="url(#bootGradient)"/>
+                    
+                    <!-- Helmet -->
+                    <circle cx="100" cy="130" r="32" fill="url(#helmetGradient)" opacity="0.9"/>
+                    <ellipse cx="100" cy="130" rx="28" ry="26" fill="rgba(150, 200, 255, 0.2)"/>
+                    <circle cx="100" cy="128" r="20" fill="rgba(100, 150, 255, 0.15)"/>
+                    
+                    <!-- Visor reflection -->
+                    <ellipse cx="95" cy="122" rx="12" ry="8" fill="rgba(255, 255, 255, 0.5)" opacity="0.6"/>
+                    
+                    <!-- Face inside helmet -->
+                    <circle cx="95" cy="128" r="2" fill="rgba(50, 50, 80, 0.7)"/>
+                    <circle cx="105" cy="128" r="2" fill="rgba(50, 50, 80, 0.7)"/>
+                    <path d="M 95 135 Q 100 138 105 135" stroke="rgba(50, 50, 80, 0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Backpack -->
+                    <rect x="88" y="185" width="24" height="35" rx="4" fill="url(#backpackGradient)"/>
+                    <circle cx="94" cy="195" r="3" fill="rgba(100, 200, 255, 0.6)"/>
+                    <circle cx="106" cy="195" r="3" fill="rgba(100, 200, 255, 0.6)"/>
+                    
+                    <!-- Gradients -->
+                    <defs>
+                        <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(220, 220, 240);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgb(180, 180, 220);stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="helmetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(200, 220, 255, 0.9);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(150, 180, 230, 0.8);stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gloveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(200, 200, 230);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgb(160, 160, 200);stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="bootGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(180, 180, 210);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgb(140, 140, 180);stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="backpackGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(200, 200, 230);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgb(160, 160, 200);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                
+                <!-- Floating particles around astronaut -->
+                <div class="space-particle s-1"></div>
+                <div class="space-particle s-2"></div>
+                <div class="space-particle s-3"></div>
+                <div class="space-particle s-4"></div>
+                <div class="space-particle s-5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-left">
+                <h2 class="section-title">Our Mission</h2>
+                <p class="mission-text">We exist to bridge the gap between ambitious visions and digital reality. By combining artistic design with powerful technology, we create experiences that don't just meet expectations—they redefine them.</p>
+                <div class="stats-grid">
+                    <div class="stat-card" data-count="50">
+                        <div class="stat-number">0+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat-card" data-count="100">
+                        <div class="stat-number">0%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-card" data-count="24">
+                        <div class="stat-number">0/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mission-right">
+                <div class="mission-visual">
+                    <div class="visual-grid">
+                        <div class="grid-cube cube-1"></div>
+                        <div class="grid-cube cube-2"></div>
+                        <div class="grid-cube cube-3"></div>
+                        <div class="grid-cube cube-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-subtitle">Comprehensive digital solutions tailored to your business needs</p>
+        
+        <div class="services-cards">
+            <div class="service-card-large" data-service="websites">
+                <div class="card-glow"></div>
+                <div class="card-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <path d="M3 9h18"/>
+                        <path d="M9 21V9"/>
+                    </svg>
+                </div>
+                <h3>Website Development</h3>
+                <p>Custom-built, responsive websites that captivate audiences and drive results. From sleek portfolios to robust e-commerce platforms.</p>
+                <a href="websites.html" class="card-link">
+                    <span>Explore Websites</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="service-card-large" data-service="ai">
+                <div class="card-glow"></div>
+                <div class="card-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>AI Solutions</h3>
+                <p>Intelligent automation and AI-powered tools that transform workflows. From chatbots to custom integrations that give you an edge.</p>
+                <a href="ai.html" class="card-link">
+                    <span>Explore AI Solutions</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2 class="section-title">Our Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Innovation First</h3>
+                <p>We stay ahead of the curve, constantly exploring new technologies and techniques to deliver cutting-edge solutions.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Client Partnership</h3>
+                <p>Your success is our success. We work collaboratively, treating every project as a true partnership.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Quality & Speed</h3>
+                <p>We believe in delivering exceptional quality without compromising on speed. Excellence shouldn't wait.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🔒</div>
+                <h3>Transparency</h3>
+                <p>Open communication, honest pricing, and clear timelines. No surprises, just results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Process Timeline -->
+    <section class="process-section">
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-subtitle">Our streamlined process ensures your vision becomes reality</p>
+        
+        <div class="timeline-container">
+            <div class="timeline-track"></div>
+            <div class="timeline-item" data-step="1">
+                <div class="timeline-marker">
+                    <span class="marker-number">1</span>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <h3>Discovery</h3>
+                    <p>We dive deep into your business, understanding your goals, audience, and unique challenges.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-step="2">
+                <div class="timeline-marker">
+                    <span class="marker-number">2</span>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <h3>Strategy & Design</h3>
+                    <p>We craft a comprehensive strategy and create stunning designs that align with your brand.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-step="3">
+                <div class="timeline-marker">
+                    <span class="marker-number">3</span>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <h3>Development</h3>
+                    <p>Our team brings designs to life with clean, efficient code and powerful functionality.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-step="4">
+                <div class="timeline-marker">
+                    <span class="marker-number">4</span>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <h3>Testing & Launch</h3>
+                    <p>Rigorous testing ensures everything works flawlessly before we launch your project to the world.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-step="5">
+                <div class="timeline-marker">
+                    <span class="marker-number">5</span>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <h3>Support & Growth</h3>
+                    <p>We provide ongoing support and optimization to ensure continued success and growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <h2 class="section-title">Transparent Pricing</h2>
+        <p class="section-subtitle">Flexible packages designed to fit your needs and budget</p>
+        
+        <div class="pricing-toggle">
+            <button class="toggle-btn active" data-pricing="websites">Websites</button>
+            <button class="toggle-btn" data-pricing="ai">AI Solutions</button>
+        </div>
+
+        <div class="pricing-grid" id="websitesPricing">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Starter</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">2,500</span>
+                    </div>
+                    <p class="price-description">Perfect for small businesses</p>
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Up to 5 pages
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Responsive design
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Basic SEO
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Contact form integration
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        30 days support
+                    </li>
+                </ul>
+                <a href="mailto:hello@auctusventures.com" class="pricing-cta">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="featured-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Professional</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">5,500</span>
+                    </div>
+                    <p class="price-description">Ideal for growing businesses</p>
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Up to 15 pages
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Custom design
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Advanced SEO
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        CMS integration
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        E-commerce ready
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        90 days support
+                    </li>
+                </ul>
+                <a href="mailto:hello@auctusventures.com" class="pricing-cta">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Enterprise</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">Custom</span>
+                    </div>
+                    <p class="price-description">For large-scale projects</p>
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Unlimited pages
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Bespoke design
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Premium SEO
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Custom integrations
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Dedicated support
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Priority updates
+                    </li>
+                </ul>
+                <a href="mailto:hello@auctusventures.com" class="pricing-cta">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="pricing-grid hidden" id="aiPricing">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Basic AI</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">3,000</span>
+                    </div>
+                    <p class="price-description">Simple automation solutions</p>
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Basic chatbot
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        FAQ automation
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Email integration
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Basic analytics
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        30 days support
+                    </li>
+                </ul>
+                <a href="mailto:hello@auctusventures.com" class="pricing-cta">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="featured-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Advanced AI</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">7,500</span>
+                    </div>
+                    <p class="price-description">Comprehensive AI solutions</p>
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Advanced chatbot
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Workflow automation
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        CRM integration
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        AI phone service
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Advanced analytics
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        90 days support
+                    </li>
+                </ul>
+                <a href="mailto:hello@auctusventures.com" class="pricing-cta">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Custom AI</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">Custom</span>
+                    </div>
+                    <p class="price-description">Tailored AI ecosystems</p>
+                </div>
+                <ul class="features-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Custom AI models
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Full automation suite
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Enterprise integrations
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Dedicated AI team
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        24/7 monitoring
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Continuous optimization
+                    </li>
+                </ul>
+                <a href="mailto:hello@auctusventures.com" class="pricing-cta">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-left">
+                <h2 class="section-title">Let's Build Something Great</h2>
+                <p class="contact-intro">Ready to transform your digital presence? Get in touch and let's discuss how we can help bring your vision to life.</p>
+                
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <a href="mailto:hello@auctusventures.com">hello@auctusventures.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Location</h4>
+                            <p>Hudsonville, Michigan, US</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Response Time</h4>
+                            <p>Within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-right">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="website">Website Development</option>
+                            <option value="ai">AI Solutions</option>
+                            <option value="both">Both Services</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long does a typical project take?</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Project timelines vary based on scope and complexity. A standard website typically takes 4-8 weeks, while AI solutions can range from 6-12 weeks. We'll provide a detailed timeline during our initial consultation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you offer ongoing support and maintenance?</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely! All our packages include initial support, and we offer flexible maintenance plans to ensure your digital assets continue to perform optimally long after launch.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can you work with existing systems and platforms?</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! We specialize in integrating with existing systems, CRMs, databases, and third-party platforms. Our solutions are designed to enhance and complement your current infrastructure.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What makes Auctus Ventures different from other agencies?</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>We combine technical excellence with creative innovation, offering both cutting-edge web development and AI solutions under one roof. Our focus on transparency, quality, and true partnership sets us apart.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you provide training for the systems you build?</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! We provide comprehensive training and documentation for all our solutions, ensuring your team can confidently manage and utilize the systems we build.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Let's transform your digital vision into reality.</p>
+            <div class="cta-buttons">
+                <a href="mailto:hello@auctusventures.com" class="cta-primary">Start a Project</a>
+                <a href="index.html" class="cta-secondary">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <script defer src="navbar.js"></script>
+    <script src="auctus.js"></script>
+</body>
+</html>
