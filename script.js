@@ -49,26 +49,26 @@ if (toggleBtn) {
 }
 
 textElements.forEach((textEl) => {
-    textEl.addEventListener('click', function() {
-        const target = this.getAttribute('data-target');
-        if (target) {
-            // If clicking on already active text, navigate to its page
-            if (activeFocus === target) {
-                const pageMap = {
-                    'websites': 'websites.html',
-                    'ai': 'ai.html',
-                    'auctus': 'auctus.html'
-                };
-                window.location.href = pageMap[target];
-            } else {
-                // Otherwise, center it
-                activeFocus = target;
-                currentStateIndex = states.indexOf(target);
-                applyFocusState(target);
-            }
-        }
-    });
-});
+         textEl.addEventListener('click', function() {
+             const target = this.getAttribute('data-target');
+             if (target) {
+                 // If clicking on already active text, navigate to its page
+                 if (activeFocus === target) {
+                     const pageMap = {
+                         'websites': 'websites.html',
+                         'ai': 'ai.html',
+                         'auctus': 'auctus.html'
+                     };
+                     window.location.href = pageMap[target];
+                 } else {
+                     // Otherwise, center it
+                     activeFocus = target;
+                     currentStateIndex = states.indexOf(target);
+                     applyFocusState(target);
+                 }
+             }
+         });
+     });
 
 // Apply initial state
 applyFocusState(activeFocus);

@@ -14,7 +14,87 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    padding-top: 120px;
 }
+
+.quick-links-bar {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(15, 20, 40, 0.6);
+    border-bottom: 1px solid rgba(120, 140, 255, 0.3);
+    backdrop-filter: blur(20px);
+    padding: 14px clamp(24px, 5vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 3vw, 32px);
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.quick-links-bar.scrolled {
+    top: 0;
+    background: rgba(15, 20, 40, 0.92);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+#navbar-placeholder {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#navbar-placeholder.hidden {
+    transform: translateY(-100%);
+}
+
+     .quick-links-label {
+         font-size: 0.85rem;
+         font-weight: 600;
+         color: rgba(180, 200, 255, 0.7);
+         text-transform: uppercase;
+         letter-spacing: 0.1em;
+     }
+
+     .quick-link {
+         font-size: 0.9rem;
+         color: rgba(220, 230, 255, 0.8);
+         text-decoration: none;
+         padding: 6px 16px;
+         border-radius: 999px;
+         border: 1px solid rgba(120, 140, 255, 0.2);
+         transition: all 0.3s ease;
+         white-space: nowrap;
+     }
+
+     .quick-link:hover {
+         background: rgba(139, 92, 246, 0.2);
+         border-color: rgba(139, 92, 246, 0.5);
+         color: #fff;
+         transform: translateY(-2px);
+     }
+
+     @media (max-width: 768px) {
+         body {
+             padding-top: 130px;
+         }
+         
+         .quick-links-bar {
+             flex-wrap: wrap;
+             gap: 8px;
+         }
+         
+         .quick-links-label {
+             width: 100%;
+             margin-bottom: 4px;
+         }
+         
+         .quick-link {
+             font-size: 0.8rem;
+             padding: 5px 12px;
+         }
+     }
 
 /* Animated Background Particles */
 .particles-container {

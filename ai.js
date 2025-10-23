@@ -1,16 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll-based Navbar and Quick Links Animation
+    const navbar = document.getElementById('navbar-placeholder');
+    const quickLinksBar = document.querySelector('.quick-links-bar');
+    let lastScrollTop = 0;
+    const scrollThreshold = 50; // Start animation after 50px of scroll
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > scrollThreshold) {
+            // Scrolling down - hide navbar and move quick links to top
+            if (navbar) navbar.classList.add('hidden');
+            if (quickLinksBar) quickLinksBar.classList.add('scrolled');
+        } else {
+            // At top of page - show navbar and return quick links to original position
+            if (navbar) navbar.classList.remove('hidden');
+            if (quickLinksBar) quickLinksBar.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
     // Network Canvas Animation
     const canvas = document.getElementById('networkCanvas');
     const ctx = canvas.getContext('2d');
-    
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-    
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        initNodes();
-    });
     
     // Network nodes
     const nodes = [];

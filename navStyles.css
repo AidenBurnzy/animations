@@ -233,6 +233,39 @@ body.has-glass-nav--offset {
     padding-top: 0;
 }
 
+/* Quick Links Bar - ADD THIS ENTIRE BLOCK */
+.quick-links-bar {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    padding: 14px clamp(24px, 5vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 3vw, 32px);
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.quick-links-bar.scrolled {
+    top: 0;
+    background: transparent;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+#navbar-placeholder {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#navbar-placeholder.hidden {
+    transform: translateY(-100%);
+}
+
 @media (max-width: 900px) {
     .glass-nav__title {
         letter-spacing: 0.3rem;

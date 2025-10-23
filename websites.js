@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll-based Navbar and Quick Links Animation
+    const navbar = document.getElementById('navbar-placeholder');
+    const quickLinksBar = document.querySelector('.quick-links-bar');
+    const scrollThreshold = 50;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > scrollThreshold) {
+            if (navbar) navbar.classList.add('hidden');
+            if (quickLinksBar) quickLinksBar.classList.add('scrolled');
+        } else {
+            if (navbar) navbar.classList.remove('hidden');
+            if (quickLinksBar) quickLinksBar.classList.remove('scrolled');
+        }
+    });
+
     // Particle Animation
     const particlesContainer = document.getElementById('particles');
     const particleCount = 50;
