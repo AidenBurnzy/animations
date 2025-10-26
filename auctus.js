@@ -142,22 +142,323 @@ document.addEventListener('DOMContentLoaded', () => {
         }, stepTime);
     }
     
-    // Timeline Scroll Animation
+    // DECLARE TIMELINE ELEMENTS FIRST (before Three.js code that references them)
+    const timelineContainer = document.querySelector('.timeline-container');
     const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    const carouselArrowLeft = document.querySelector('.carousel-arrow-left');
+    const carouselArrowRight = document.querySelector('.carousel-arrow-right');
+    const carouselHint = document.querySelector('.carousel-hint');
+
+    // Three.js Globe Rendering
+    const globeCanvas = document.getElementById('globe-canvas');
+
+    if (globeCanvas && window.innerWidth > 1024 && typeof THREE !== 'undefined') {
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        camera.position.z = 4.5;
+        camera.position.y = 0;
+
+        const renderer = new THREE.WebGLRenderer({
+            canvas: globeCanvas,
+            alpha: true,
+            antialias: true
+        });
+        renderer.setSize(800, 800);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Create globe sphere
+        const geometry = new THREE.SphereGeometry(1.5, 64, 64);
+        
+        // Main globe material with gradient and lighting
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x3d2864,
+            emissive: 0x1a0f2e,
+            specular: 0x9b59ff,
+            shininess: 100,
+            transparent: true,
+            opacity: 0.75
+        });
+        
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        // Wireframe overlay
+        const wireframeGeo = new THREE.SphereGeometry(1.52, 32, 32);
+        const wireframeMat = new THREE.MeshBasicMaterial({
+            color: 0x9b59ff,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.35
+        });
+        const wireframe = new THREE.Mesh(wireframeGeo, wireframeMat);
+        scene.add(wireframe);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x404040, 2);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xb87cff, 2, 100);
+        pointLight.position.set(2, 2, 2);
+        scene.add(pointLight);
+
+        const pointLight2 = new THREE.PointLight(0x59c3ff, 1.5, 100);
+        pointLight2.position.set(-2, -1, 2);
+        scene.add(pointLight2);
+
+        // Animation - globe surface rotates based on interaction ONLY
+        let isCarouselActive = false;
+        
+        function animateGlobe() {
+            requestAnimationFrame(animateGlobe);
+            
+            // No auto-rotation - globe only moves when user drags!
+            // Rotations are set by the drag handler
+            
+            renderer.render(scene, camera);
+        }
+        
+        animateGlobe();
+
+        // Store reference for carousel interaction
+        if (timelineContainer) {
+            window.globeRotation = { 
+                globe, 
+                wireframe,
+                setActive: (active) => { 
+                    isCarouselActive = active;
+                }
+            };
+        }
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                renderer.setSize(800, 800);
             }
         });
-    }, {
-        threshold: 0.3,
-        rootMargin: '0px 0px -100px 0px'
-    });
+    }
     
-    timelineItems.forEach(item => {
-        timelineObserver.observe(item);
-    });
+    // 3D Carousel Timeline with Interactive Globe Rotation
+    if (timelineContainer && timelineItems.length) {
+        let rotationX = 0;
+        let rotationY = 0;
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let startRotationX = 0;
+        let startRotationY = 0;
+        let velocityX = 0;
+        let velocityY = 0;
+        let lastX = 0;
+        let lastY = 0;
+        let lastTime = Date.now();
+        let hasInteracted = false;
+        
+        const angleStep = 360 / timelineItems.length;
+        
+        // Set initial angles
+        timelineContainer.style.setProperty('--items', timelineItems.length);
+        timelineItems.forEach((item, index) => {
+            const angle = angleStep * index;
+            item.style.setProperty('--item-angle', `${angle}deg`);
+        });
+        
+        // Apply initial transform to center first card
+        const initialTransform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+        timelineContainer.style.transform = initialTransform;
+        
+        // Apply initial counter-rotation to globe canvas
+        if (globeCanvas) {
+            const counterTransform = `translate(-50%, -50%) rotateY(${-rotationY}deg) rotateX(${-rotationX}deg)`;
+            globeCanvas.style.transform = counterTransform;
+        }
+        
+        // Hide hint after first interaction
+        function hideHint() {
+            if (!hasInteracted && carouselHint) {
+                hasInteracted = true;
+                carouselHint.classList.add('hidden');
+            }
+        }
+        
+        // Navigation arrow handlers
+        if (carouselArrowLeft) {
+            carouselArrowLeft.addEventListener('click', () => {
+                targetRotationY += angleStep;
+                hideHint();
+            });
+        }
+        
+        if (carouselArrowRight) {
+            carouselArrowRight.addEventListener('click', () => {
+                targetRotationY -= angleStep;
+                hideHint();
+            });
+        }
+        
+        // Mouse/Touch drag handlers
+        function handleDragStart(e) {
+            isDragging = true;
+            startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            lastX = startX;
+            lastY = startY;
+            startRotationX = rotationX;
+            startRotationY = rotationY;
+            velocityX = 0;
+            velocityY = 0;
+            lastTime = Date.now();
+            timelineContainer.style.cursor = 'grabbing';
+            hideHint();
+            
+            // Prevent text selection during drag
+            e.preventDefault();
+            document.body.style.userSelect = 'none';
+        }
+        
+        function handleDragMove(e) {
+            if (!isDragging) return;
+            
+            e.preventDefault();
+            const currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            const currentY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            const deltaX = currentX - startX;
+            const deltaY = currentY - startY;
+            const currentTime = Date.now();
+            const deltaTime = currentTime - lastTime;
+            
+            // Calculate rotation (much slower now - reduced sensitivity)
+            targetRotationY = startRotationY + (deltaX * 0.15);
+            targetRotationX = startRotationX - (deltaY * 0.1);
+            
+            // Clamp X rotation to prevent flipping
+            targetRotationX = Math.max(-60, Math.min(60, targetRotationX));
+            
+            // Calculate velocity for momentum (reduced)
+            if (deltaTime > 0) {
+                velocityX = -(currentY - lastY) / deltaTime * 15;
+                velocityY = (currentX - lastX) / deltaTime * 20;
+            }
+            
+            lastX = currentX;
+            lastY = currentY;
+            lastTime = currentTime;
+        }
+        
+        function handleDragEnd() {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            timelineContainer.style.cursor = 'grab';
+            
+            // Restore text selection
+            document.body.style.userSelect = '';
+            
+            // Apply momentum (reduced for slower spin)
+            targetRotationX += velocityX * 0.15;
+            targetRotationY += velocityY * 0.15;
+            
+            // Clamp X rotation
+            targetRotationX = Math.max(-60, Math.min(60, targetRotationX));
+        }
+        
+        // Mouse events on timeline container
+        timelineContainer.addEventListener('mousedown', handleDragStart);
+        document.addEventListener('mousemove', handleDragMove);
+        document.addEventListener('mouseup', handleDragEnd);
+        
+        // Mouse events on globe canvas (makes center always draggable)
+        if (globeCanvas) {
+            globeCanvas.addEventListener('mousedown', handleDragStart);
+            globeCanvas.addEventListener('touchstart', handleDragStart, { passive: false });
+            globeCanvas.style.pointerEvents = 'auto';
+            globeCanvas.style.cursor = 'grab';
+        }
+        
+        // Prevent text selection on drag
+        timelineContainer.addEventListener('dragstart', (e) => e.preventDefault());
+        timelineContainer.addEventListener('selectstart', (e) => {
+            if (isDragging) e.preventDefault();
+        });
+        
+        // Touch events
+        timelineContainer.addEventListener('touchstart', handleDragStart, { passive: false });
+        document.addEventListener('touchmove', handleDragMove, { passive: false });
+        document.addEventListener('touchend', handleDragEnd);
+        
+        // Smooth rotation animation
+        function animateRotation() {
+            // Smooth interpolation
+            rotationX += (targetRotationX - rotationX) * 0.1;
+            rotationY += (targetRotationY - rotationY) * 0.1;
+            
+            // Apply friction to velocity
+            velocityX *= 0.95;
+            velocityY *= 0.95;
+            
+            // Check if carousel is being actively manipulated
+            const isActive = isDragging || Math.abs(velocityX) > 0.5 || Math.abs(velocityY) > 0.5;
+            
+            // Apply rotation to container (cards rotate around globe)
+            const transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+            timelineContainer.style.transform = transform;
+            
+            // COUNTER-ROTATE THE CANVAS to keep it flat and circular!
+            // This undoes the parent container's rotation
+            if (globeCanvas) {
+                const counterTransform = `translate(-50%, -50%) rotateY(${-rotationY}deg) rotateX(${-rotationX}deg)`;
+                globeCanvas.style.transform = counterTransform;
+            }
+            
+            // Rotate the globe's SURFACE (not its position) based on rotation
+            if (window.globeRotation) {
+                const { globe, wireframe, setActive } = window.globeRotation;
+                
+                // Tell globe animation system if we're actively dragging
+                if (setActive) setActive(isActive);
+                
+                // Update globe surface rotation whenever carousel rotates
+                // Convert carousel rotation to radians
+                const radiansY = (rotationY * Math.PI) / 180;
+                const radiansX = (rotationX * Math.PI) / 180;
+                
+                // Rotate globe surface to match carousel rotation
+                // Position stays fixed, only surface rotates
+                globe.rotation.y = radiansY;
+                globe.rotation.x = radiansX;
+                
+                wireframe.rotation.y = radiansY * 0.95;
+                wireframe.rotation.x = radiansX * 0.95;
+            }
+            
+            requestAnimationFrame(animateRotation);
+        }
+        
+        animateRotation();
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                targetRotationY -= angleStep;
+                hideHint();
+            } else if (e.key === 'ArrowRight') {
+                targetRotationY += angleStep;
+                hideHint();
+            } else if (e.key === 'ArrowUp') {
+                targetRotationX = Math.min(60, targetRotationX + 15);
+                hideHint();
+            } else if (e.key === 'ArrowDown') {
+                targetRotationX = Math.max(-60, targetRotationX - 15);
+                hideHint();
+            }
+        });
+        
+        // Set cursor style
+        timelineContainer.style.cursor = 'grab';
+    }
     
     // Pricing Toggle
     const pricingButtons = document.querySelectorAll('.toggle-btn');
@@ -232,9 +533,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         scrollPosition = window.pageYOffset;
         
-        const floatingAstronaut = document.querySelector('.floating-astronaut');
-        if (floatingAstronaut && window.innerWidth > 1024) {
-            floatingAstronaut.style.transform = `translateY(calc(-50% + ${scrollPosition * 0.1}px))`;
+        const floatingNexus = document.querySelector('.floating-energy-nexus');
+        if (floatingNexus && window.innerWidth > 1024) {
+            floatingNexus.style.transform = `translateY(calc(-50% + ${scrollPosition * 0.1}px))`;
         }
     });
     
@@ -305,18 +606,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!this.classList.contains('featured')) {
                 this.style.transform = 'translateY(0) scale(1)';
             }
-        });
-    });
-    
-    // Timeline Marker Animation on Hover
-    const timelineMarkers = document.querySelectorAll('.timeline-marker');
-    
-    timelineMarkers.forEach(marker => {
-        marker.addEventListener('mouseenter', function() {
-            this.style.animation = 'none';
-            setTimeout(() => {
-                this.style.animation = '';
-            }, 10);
         });
     });
     

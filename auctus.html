@@ -6,8 +6,10 @@
     <title>About Us - Auctus Ventures</title>
     <link rel="stylesheet" href="auctus.css">
     <link rel="stylesheet" href="navStyles.css">
-    <!-- Chatbot CSS -->
     <link rel="stylesheet" href="chatbot-widget.css">
+    
+    <!-- Add Three.js BEFORE your other scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -36,7 +38,7 @@
                 <span class="badge-icon">⚡</span>
                 <span>Est. 2025</span>
             </div>
-            <h1 class="hero-title">`        `
+            <h1 class="hero-title">
                 <span class="title-line">Power Everything,</span>
                 <span class="title-line gradient-text">With Auctus</span>
             </h1>
@@ -218,9 +220,26 @@
         <h2 class="section-title">How We Work</h2>
         <p class="section-subtitle">Our streamlined process ensures your vision becomes reality</p>
         
+        <!-- Carousel Navigation Arrows -->
+        <div class="carousel-nav">
+            <button class="carousel-arrow carousel-arrow-left" aria-label="Previous step">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <span class="carousel-hint">← Spin the globe to explore →</span>
+            <button class="carousel-arrow carousel-arrow-right" aria-label="Next step">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+        
         <div class="timeline-container">
+            <!-- 3D Globe -->
+            <canvas id="globe-canvas"></canvas>
             <div class="timeline-track"></div>
-            <div class="timeline-item" data-step="1">
+            <div class="timeline-item" data-step="1" tabindex="0" aria-label="Step 1: Discovery">
                 <div class="timeline-marker">
                     <span class="marker-number">1</span>
                     <div class="marker-pulse"></div>
@@ -230,7 +249,7 @@
                     <p>We dive deep into your business, understanding your goals, audience, and unique challenges.</p>
                 </div>
             </div>
-            <div class="timeline-item" data-step="2">
+            <div class="timeline-item" data-step="2" tabindex="0" aria-label="Step 2: Strategy &amp; Design">
                 <div class="timeline-marker">
                     <span class="marker-number">2</span>
                     <div class="marker-pulse"></div>
@@ -240,7 +259,7 @@
                     <p>We craft a comprehensive strategy and create stunning designs that align with your brand.</p>
                 </div>
             </div>
-            <div class="timeline-item" data-step="3">
+            <div class="timeline-item" data-step="3" tabindex="0" aria-label="Step 3: Development">
                 <div class="timeline-marker">
                     <span class="marker-number">3</span>
                     <div class="marker-pulse"></div>
@@ -250,7 +269,7 @@
                     <p>Our team brings designs to life with clean, efficient code and powerful functionality.</p>
                 </div>
             </div>
-            <div class="timeline-item" data-step="4">
+            <div class="timeline-item" data-step="4" tabindex="0" aria-label="Step 4: Testing &amp; Launch">
                 <div class="timeline-marker">
                     <span class="marker-number">4</span>
                     <div class="marker-pulse"></div>
@@ -260,7 +279,7 @@
                     <p>Rigorous testing ensures everything works flawlessly before we launch your project to the world.</p>
                 </div>
             </div>
-            <div class="timeline-item" data-step="5">
+            <div class="timeline-item" data-step="5" tabindex="0" aria-label="Step 5: Support &amp; Growth">
                 <div class="timeline-marker">
                     <span class="marker-number">5</span>
                     <div class="marker-pulse"></div>
@@ -703,8 +722,6 @@
             </div>
         </div>
     </section>
-
-
 
     <!-- CTA Section -->
     <section class="cta-section">
