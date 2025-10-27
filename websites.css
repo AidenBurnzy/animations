@@ -1354,54 +1354,82 @@ body {
     min-height: 350px;
 }
 
-/* Corporate Theme Mockup */
-.corporate-theme .mock-nav {
-    height: 50px;
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-    border-radius: 8px;
-    margin-bottom: 30px;
+/* Add this to your websites.css file after the .theme-description section */
+
+/* Fix preview container height to prevent overlap */
+.preview-container {
+    position: relative;
+    min-height: 850px !important; /* Increased from 500px to accommodate iframe */
 }
 
-.corporate-theme .mock-hero {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 30px;
+/* Add extra spacing to showcase section */
+.showcase-section {
+    margin-bottom: 80px;
 }
 
-.mock-text-block {
-    height: 40px;
-    background: rgba(180, 200, 255, 0.2);
-    border-radius: 6px;
-    width: 70%;
+/* Iframe Container Styling */
+.iframe-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 48px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(120, 140, 255, 0.3);
+    background: rgba(10, 15, 30, 0.8);
+    backdrop-filter: blur(20px);
 }
 
-.mock-text-line {
-    height: 12px;
-    background: rgba(180, 200, 255, 0.15);
-    border-radius: 4px;
-    width: 50%;
+.theme-iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+    display: block;
+    background: white;
 }
 
-.mock-button {
-    height: 35px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.4));
-    border-radius: 999px;
-    width: 150px;
-    margin-top: 8px;
+/* Responsive iframe sizing */
+@media (max-width: 1024px) {
+    .theme-iframe {
+        height: 550px;
+    }
+    
+    .iframe-container {
+        max-width: 95%;
+    }
+    
+    .preview-container {
+        min-height: 700px !important;
+    }
 }
 
-.mock-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+@media (max-width: 768px) {
+    .theme-iframe {
+        height: 450px;
+    }
+    
+    .iframe-container {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    
+    .preview-container {
+        min-height: 600px !important;
+    }
+    
+    .showcase-section {
+        margin-bottom: 60px;
+    }
 }
 
-.mock-card {
-    height: 100px;
-    background: rgba(120, 140, 255, 0.1);
-    border-radius: 8px;
-    border: 1px solid rgba(120, 140, 255, 0.2);
+@media (max-width: 480px) {
+    .theme-iframe {
+        height: 350px;
+    }
+    
+    .preview-container {
+        min-height: 500px !important;
+    }
 }
 
 /* Creative Theme Mockup */
