@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="navStyles.css">
     <!-- Chatbot CSS -->
     <link rel="stylesheet" href="chatbot-widget.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -23,7 +24,6 @@
             <a href="#capabilities" class="quick-link">Capabilities</a>
             <a href="#process" class="quick-link">Process</a>
             <a href="#use-cases" class="quick-link">Use Cases</a>
-            <a href="#testimonials" class="quick-link">Testimonials</a>
         </div>
         <div class="quick-links-slot quick-links-slot--right" aria-hidden="true"></div>
     </div>
@@ -345,55 +345,84 @@
     <section id="process" class="process-section">
         <h2 class="section-title">Our Implementation Process</h2>
         <p class="section-subtitle">A proven methodology to bring AI solutions from concept to production.</p>
-        <div class="process-timeline">
-            <div class="timeline-item">
+
+        <div class="carousel-nav">
+            <button class="carousel-arrow carousel-arrow-left" aria-label="Previous step">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <span class="carousel-hint">← Spin the globe to explore →</span>
+            <button class="carousel-arrow carousel-arrow-right" aria-label="Next step">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="timeline-container">
+            <canvas id="globe-canvas"></canvas>
+            <div class="timeline-track"></div>
+
+            <div class="timeline-item" data-step="1" tabindex="0" aria-label="Step 1: Discovery and Strategy">
                 <div class="timeline-marker">
-                    <span>1</span>
+                    <span class="marker-number">1</span>
+                    <div class="marker-pulse"></div>
                 </div>
                 <div class="timeline-content">
                     <h3>Discovery & Strategy</h3>
                     <p>We analyze your business needs, identify AI opportunities, and create a strategic roadmap for implementation.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+
+            <div class="timeline-item" data-step="2" tabindex="0" aria-label="Step 2: Data Preparation">
                 <div class="timeline-marker">
-                    <span>2</span>
+                    <span class="marker-number">2</span>
+                    <div class="marker-pulse"></div>
                 </div>
                 <div class="timeline-content">
                     <h3>Data Preparation</h3>
                     <p>Clean, organize, and prepare your data for optimal model training and performance.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+
+            <div class="timeline-item" data-step="3" tabindex="0" aria-label="Step 3: Model Development">
                 <div class="timeline-marker">
-                    <span>3</span>
+                    <span class="marker-number">3</span>
+                    <div class="marker-pulse"></div>
                 </div>
                 <div class="timeline-content">
                     <h3>Model Development</h3>
                     <p>Build and train custom AI models tailored to your specific requirements and objectives.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+
+            <div class="timeline-item" data-step="4" tabindex="0" aria-label="Step 4: Testing and Optimization">
                 <div class="timeline-marker">
-                    <span>4</span>
+                    <span class="marker-number">4</span>
+                    <div class="marker-pulse"></div>
                 </div>
                 <div class="timeline-content">
                     <h3>Testing & Optimization</h3>
                     <p>Rigorously test and fine-tune models to ensure accuracy, reliability, and performance.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+
+            <div class="timeline-item" data-step="5" tabindex="0" aria-label="Step 5: Deployment and Integration">
                 <div class="timeline-marker">
-                    <span>5</span>
+                    <span class="marker-number">5</span>
+                    <div class="marker-pulse"></div>
                 </div>
                 <div class="timeline-content">
                     <h3>Deployment & Integration</h3>
                     <p>Seamlessly integrate AI solutions into your existing systems and workflows.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+
+            <div class="timeline-item" data-step="6" tabindex="0" aria-label="Step 6: Monitor and Improve">
                 <div class="timeline-marker">
-                    <span>6</span>
+                    <span class="marker-number">6</span>
+                    <div class="marker-pulse"></div>
                 </div>
                 <div class="timeline-content">
                     <h3>Monitor & Improve</h3>
@@ -459,60 +488,36 @@
                     <li>Production forecasting</li>
                 </ul>
             </div>
-        </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials-section">
-        <h2 class="section-title">Powered By Intelligence</h2>
-        <br>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="card-glow"></div>
-                <div class="quote-mark">"</div>
-                <p class="testimonial-text">The AI chatbot they built has reduced our customer support workload by 60% while actually improving customer satisfaction scores. It's been a game-changer.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <span>MC</span>
-                    </div>
-                    <div class="author-info">
-                        <h4>Maria Chen</h4>
-                        <p>Head of Operations, TechFlow</p>
-                    </div>
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <div class="use-case-icon">🚚</div>
+                    <h3>Logistics</h3>
                 </div>
+                <ul class="use-case-list">
+                    <li>Route optimization and dispatch</li>
+                    <li>Real-time fleet monitoring</li>
+                    <li>Warehouse picking automation</li>
+                    <li>Demand forecasting and planning</li>
+                </ul>
             </div>
 
-            <div class="testimonial-card">
-                <div class="card-glow"></div>
-                <div class="quote-mark">"</div>
-                <p class="testimonial-text">Their predictive analytics model helped us optimize our inventory management, reducing costs by 35% while eliminating stockouts. The ROI was immediate.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <span>JT</span>
-                    </div>
-                    <div class="author-info">
-                        <h4>James Thompson</h4>
-                        <p>CFO, RetailPro Solutions</p>
-                    </div>
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <div class="use-case-icon">🎓</div>
+                    <h3>Education</h3>
                 </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="card-glow"></div>
-                <div class="quote-mark">"</div>
-                <p class="testimonial-text">The automation workflows they implemented freed up our team to focus on strategic initiatives. We're processing 10x more data with the same headcount.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <span>SP</span>
-                    </div>
-                    <div class="author-info">
-                        <h4>Sarah Park</h4>
-                        <p>CTO, DataDrive Inc</p>
-                    </div>
-                </div>
+                <ul class="use-case-list">
+                    <li>Adaptive learning pathways</li>
+                    <li>Automated grading and feedback</li>
+                    <li>Student success prediction</li>
+                    <li>Enrollment and resource planning</li>
+                </ul>
             </div>
         </div>
     </section>
+
+    
 
     <!-- CTA Section -->
     <section class="cta-section">

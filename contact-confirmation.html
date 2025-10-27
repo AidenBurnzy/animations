@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Auctus Ventures</title>
+    <link rel="stylesheet" href="contact-confirmation.css">
+    <link rel="stylesheet" href="navStyles.css">
+    <link rel="stylesheet" href="chatbot-widget.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="confirmation-shell" data-gated>
+        <section class="confirmation-card">
+            <header class="confirmation-header">
+                <span class="badge">Submission Received</span>
+                <h1 class="confirmation-title">We're already reviewing your message<span>.</span></h1>
+                <p class="confirmation-lede">Thanks for reaching out to Auctus Ventures. Your note just landed in our studio inbox and the team will follow up within <strong>1-2 business days</strong> with next steps tailored to your goals.</p>
+            </header>
+
+            <div class="confirmation-grid">
+                <article class="resource-card" aria-labelledby="prep-title">
+                    <h3 id="prep-title">While you wait, gather your toolkit</h3>
+                    <p>Having the right assets ready helps us move faster once we connect. Start pulling together:</p>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 16.5V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10.5"></path><path d="M8 18h8"></path><path d="M9 22h6"></path></svg>
+                            <span>Logos (primary + alternates), brand colors, and typography specs.</span>
+                        </div>
+                        <div class="resource-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                            <span>Imagery, product shots, UI inspiration, or mood boards.</span>
+                        </div>
+                        <div class="resource-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M4 9h16"></path><path d="M9 9v11"></path></svg>
+                            <span>Key messaging, positioning statements, and must-have copy points.</span>
+                        </div>
+                        <div class="resource-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20v-6"></path><path d="M6 20v-2"></path><path d="M18 20v-4"></path><path d="M2 20h20"></path><path d="M3 16l4-9 3 7 4-5 4 5"/></svg>
+                            <span>Any analytics, workflows, or AI process notes we should plug into.</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="resource-card" aria-labelledby="expect-title">
+                    <h3 id="expect-title">What happens next</h3>
+                    <p>We personally review every submission. Expect:</p>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                            <span>A direct email confirming details and offering calendar slots.</span>
+                        </div>
+                        <div class="resource-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h18v4H3z"></path><path d="M8 7v14"></path><path d="M16 7v14"></path><path d="M12 11v10"></path></svg>
+                            <span>Optional NDA if you need to share sensitive documents.</span>
+                        </div>
+                        <div class="resource-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M4 9h16"></path><path d="M12 9v11"></path></svg>
+                            <span>An outline of the discovery workshop tailored to your initiative.</span>
+                        </div>
+                    </div>
+                    <p class="footnote">If you don't see an email from us shortly, check spam or promotions, or email <a href="mailto:hello@auctusventures.com">hello@auctusventures.com</a> directly.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="next-steps">
+            <h2>Want to move even faster?</h2>
+            <div class="next-steps-list">
+                <p>Draft a short bullet list of project priorities, success metrics, and any integrations we should know about.</p>
+                <p>Collect reference links or demos that capture the aesthetic or workflows you'd like us to incorporate.</p>
+                <p>Prep stakeholder availability for the first discovery call so we can lock it in immediately.</p>
+            </div>
+            <a class="back-link" href="index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path><path d="M21 12H9"></path></svg>
+                Back to Home Orbit
+            </a>
+        </section>
+    </main>
+
+    <div id="ai-chat-widget">
+        <button id="chat-button" aria-label="Open chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+        </button>
+        <div id="chat-window">
+            <div id="chat-header">
+                <div>
+                    <h3>Auctus AI Assistant</h3>
+                    <p>Usually replies instantly</p>
+                </div>
+                <button id="close-chat" aria-label="Close chat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="chat-messages">
+                <div class="chat-message bot">
+                    <div class="message-bubble">Thanks for reaching out! If you need anything else before we reply, just let me know.</div>
+                </div>
+            </div>
+            <div id="chat-input-container">
+                <textarea id="chat-input" placeholder="Type your message..." rows="1"></textarea>
+                <button id="send-button" aria-label="Send message">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="navbar.js"></script>
+    <script src="contact-confirmation.js"></script>
+    <script src="chatbot-widget.js"></script>
+</body>
+</html>

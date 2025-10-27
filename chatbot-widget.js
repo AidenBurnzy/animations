@@ -172,7 +172,7 @@ function processMessageText(text) {
             'ai': 'ai.html',
             'about': 'auctus.html',
             'auctus': 'auctus.html',
-            'contact': 'auctus.html#contact'
+            'contact': 'contact.html'
         };
         const url = pageMap[page.toLowerCase()] || 'index.html';
         return `<a href="${url}" class="chat-link">${match}</a>`;
@@ -180,6 +180,9 @@ function processMessageText(text) {
     
     // Convert section references (e.g., "#pricing", "pricing section")
     processed = processed.replace(/\b(pricing|services|testimonials|contact|faq)\s+section\b/gi, (match, section) => {
+        if (section.toLowerCase() === 'contact') {
+            return `<a href="contact.html" class="chat-link">${match}</a>`;
+        }
         return `<a href="#${section.toLowerCase()}" class="chat-link scroll-link">${match}</a>`;
     });
     
@@ -226,7 +229,7 @@ function addLinkHandlers(contentElement) {
                     }, 300);
                 }
             }
-            // Handle same-page links with anchors (e.g., "auctus.html#contact")
+            // Handle same-page links with anchors (e.g., "auctus.html#pricing")
             else if (href.includes('#')) {
                 const [page, anchor] = href.split('#');
                 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -275,12 +278,12 @@ function getAutoResponse(message) {
     
     // Contact queries
     if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
-        return 'You can reach us at founder.auctusventures@gmail.com or visit our [contact section](auctus.html#contact) to send us a message directly!';
+    return 'You can reach us at founder.auctusventures@gmail.com or explore our [contact page](contact.html) to send us a message directly!';
     }
     
     // Getting started
     if (lowerMessage.includes('get started') || lowerMessage.includes('begin') || lowerMessage.includes('start')) {
-        return 'Great! The best way to get started is to [contact us](auctus.html#contact) with details about your project. We\'ll set up a consultation to discuss your needs and create a custom solution.';
+    return 'Great! The best way to get started is to [contact us](contact.html) with details about your project. We\'ll set up a consultation to discuss your needs and create a custom solution.';
     }
     
     return null; // No auto-response, will use webhook
