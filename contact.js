@@ -25,37 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            const formData = new FormData(contactForm);
-            const name = formData.get('name') || '';
-            const email = formData.get('email') || '';
-            const company = formData.get('company') || '';
-            const phone = formData.get('phone') || '';
-            const service = formData.get('service') || 'General Inquiry';
-            const timeline = formData.get('timeline') || 'Unspecified timeline';
-            const message = formData.get('message') || '';
-
-            const subject = `New Inquiry - ${service}`;
-            const bodyLines = [
-                `Name: ${name}`,
-                `Email: ${email}`,
-                `Company: ${company}`,
-                `Phone: ${phone}`,
-                `Focus: ${service}`,
-                `Timeline: ${timeline}`,
-                '',
-                'Message:',
-                message.trim()
-            ];
-
-            const mailto = `mailto:hello@auctusventures.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-
             sessionStorage.setItem('auctus-contact-confirmed', Date.now().toString());
-            window.location.href = mailto;
             contactForm.reset();
-
-            setTimeout(() => {
-                window.location.href = 'contact-confirmation.html';
-            }, 600);
+            window.location.href = 'contact-confirmation.html';
         });
     }
 
