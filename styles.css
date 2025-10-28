@@ -37,13 +37,14 @@ body {
 .animation-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: column;
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 1200px;
-    height: 100%;
+    height: 100vh;
+    min-height: 100svh;
     padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 60px);
 }
 
@@ -74,6 +75,9 @@ body {
     flex-shrink: 1;
     margin: 0 auto;
     flex-grow: 0;
+    height: 100vh;
+    min-height: 100svh;
+    overflow: visible;
 }
 
 .hero-orbit.show-ai {
@@ -195,9 +199,13 @@ body {
 
 /* WEBSITES text */
 .text-websites {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(calc(-50% - var(--auctus-orbit-radius) - 100px), calc(-50% + 180px)) scale(0.5);
     opacity: 0.4;
     z-index: 2;
+    pointer-events: auto;
 }
 
 .hero-orbit.show-auctus .text-websites {
@@ -221,9 +229,13 @@ body {
 
 /* AI text */
 .text-ai {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(calc(-50% + var(--ai-orbit-radius)), calc(-50% + 180px)) scale(var(--ai-scale));
     opacity: 0.78;
     z-index: 2;
+    pointer-events: auto;
 }
 
 .hero-orbit.show-ai .text-ai {
@@ -255,8 +267,13 @@ body {
 
 /* AUCTUS text */
 .text-auctus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     opacity: 1;
+    z-index: 10;
+    pointer-events: auto;
 }
 
 .hero-orbit.show-auctus .text-auctus {
@@ -958,6 +975,717 @@ body {
     animation-direction: reverse;
 }
 
+/* ========================================
+   MOBILE & RESPONSIVE MEDIA QUERIES
+   ======================================== */
+
+@media (max-width: 1100px) {
+    /* Reduce orbit radius significantly to prevent cutoff */
+    .hero-orbit {
+        --ai-orbit-radius: clamp(160px, 22vw, 280px);
+        --auctus-orbit-radius: clamp(160px, 22vw, 280px);
+    }
+    
+    .text {
+        font-size: clamp(3.5rem, 8vw, 8rem);
+    }
+    
+    /* Scale down text to fit better */
+    .text-websites,
+    .text-ai {
+        font-size: clamp(3rem, 6.5vw, 6rem);
+        letter-spacing: clamp(0.18rem, 0.45vw, 0.35rem);
+    }
+    
+    /* Scale down visuals proportionally */
+    .ai-core-visual {
+        width: clamp(180px, 25vw, 280px);
+    }
+    
+    .auctus-core-visual {
+        width: clamp(180px, 25vw, 280px);
+    }
+    
+    .hero-backdrop {
+        width: clamp(200px, 25vw, 300px);
+    }
+}
+
+@media (max-width: 900px) {
+    .text {
+        font-size: clamp(3rem, 9vw, 7rem);
+    }
+    
+    /* Reduce orbit radius on medium screens to prevent cutoff */
+    .hero-orbit {
+        --ai-orbit-radius: clamp(150px, 20vw, 260px);
+        --auctus-orbit-radius: clamp(150px, 20vw, 260px);
+    }
+    
+    /* Scale down text slightly to fit better */
+    .text-websites,
+    .text-ai {
+        font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    }
+}
+
+@media (max-width: 800px) {
+    /* Further reduce spacing on smaller medium screens */
+    .hero-orbit {
+        --ai-orbit-radius: clamp(160px, 20vw, 260px);
+        --auctus-orbit-radius: clamp(160px, 20vw, 260px);
+        padding: clamp(16px, 3vw, 32px);
+    }
+    
+    .text-websites,
+    .text-ai {
+        font-size: clamp(2.5rem, 6.5vw, 5rem);
+        letter-spacing: clamp(0.15rem, 0.4vw, 0.3rem);
+    }
+    
+    .text-auctus {
+        font-size: clamp(3.5rem, 7.5vw, 6rem);
+    }
+    
+    /* Scale down the visual elements too */
+    .ai-core-visual {
+        width: clamp(160px, 24vw, 260px);
+    }
+    
+    .auctus-core-visual {
+        width: clamp(160px, 24vw, 260px);
+    }
+    
+    .hero-backdrop {
+        width: clamp(180px, 24vw, 280px);
+    }
+}
+
+@media (max-width: 720px) {
+    .hero-orbit {
+        height: auto;
+        min-height: 80vh;
+        aspect-ratio: auto;
+    }
+    
+    /* DEFAULT STATE - AUCTUS top, WEBSITES middle, AI bottom */
+    .hero-orbit .text-auctus,
+    .hero-orbit.show-auctus .text-auctus {
+        top: 32% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        z-index: 10 !important;
+        opacity: 1 !important;
+        font-size: clamp(2.2rem, 9vw, 3.5rem) !important;
+        letter-spacing: clamp(0.12rem, 0.4vw, 0.24rem) !important;
+    }
+    
+    .hero-orbit .text-websites,
+    .hero-orbit.show-auctus .text-websites {
+        top: 56% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.75) !important;
+        z-index: 9 !important;
+        opacity: 0.7 !important;
+        font-size: clamp(1.5rem, 7vw, 2.5rem) !important;
+        letter-spacing: clamp(0.1rem, 0.3vw, 0.18rem) !important;
+    }
+    
+    .hero-orbit .text-ai,
+    .hero-orbit.show-auctus .text-ai {
+        top: 72% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.75) !important;
+        z-index: 9 !important;
+        opacity: 0.7 !important;
+        font-size: clamp(1.5rem, 7vw, 2.5rem) !important;
+        letter-spacing: clamp(0.1rem, 0.3vw, 0.18rem) !important;
+    }
+    
+    /* WEBSITES CLICKED - WEBSITES top, AUCTUS middle, AI bottom */
+    .hero-orbit.show-websites .text-websites {
+        top: 32% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        z-index: 10 !important;
+        opacity: 1 !important;
+        font-size: clamp(2.2rem, 9vw, 3.5rem) !important;
+        letter-spacing: clamp(0.12rem, 0.4vw, 0.24rem) !important;
+    }
+    
+    .hero-orbit.show-websites .text-auctus {
+        top: 56% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+        opacity: 0.35 !important;
+        z-index: 2 !important;
+    }
+    
+    .hero-orbit.show-websites .text-ai {
+        top: 72% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+        opacity: 0.35 !important;
+        z-index: 2 !important;
+    }
+    
+    /* AI TECH CLICKED - AI top, AUCTUS middle, WEBSITES bottom */
+    .hero-orbit.show-ai .text-ai {
+        top: 32% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        z-index: 10 !important;
+        opacity: 1 !important;
+        font-size: clamp(2.2rem, 9vw, 3.5rem) !important;
+        letter-spacing: clamp(0.12rem, 0.4vw, 0.24rem) !important;
+    }
+    
+    .hero-orbit.show-ai .text-auctus {
+        top: 56% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+        opacity: 0.35 !important;
+        z-index: 2 !important;
+    }
+    
+    .hero-orbit.show-ai .text-websites {
+        top: 72% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+        opacity: 0.35 !important;
+        z-index: 2 !important;
+    }
+    
+    /* AUCTUS orb - DEFAULT at top */
+    .auctus-core-visual,
+    .hero-orbit.show-auctus .auctus-core-visual {
+        width: clamp(180px, 38vw, 260px) !important;
+        top: 32% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.88) !important;
+        opacity: 0.94 !important;
+        z-index: 2 !important;
+    }
+    
+    /* WEBSITES backdrop - DEFAULT at middle */
+    .hero-backdrop,
+    .hero-orbit.show-auctus .hero-backdrop {
+        display: block !important;
+        width: clamp(140px, 32vw, 220px) !important;
+        top: 56% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+        opacity: 0.5 !important;
+        z-index: 1 !important;
+    }
+    
+    /* AI core - DEFAULT at bottom */
+    .ai-core-visual,
+    .hero-orbit.show-auctus .ai-core-visual {
+        display: block !important;
+        width: clamp(140px, 32vw, 220px) !important;
+        top: 72% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+        opacity: 0.5 !important;
+        z-index: 1 !important;
+    }
+    
+    /* WEBSITES CLICKED - backdrop moves to top, AUCTUS orb to middle, AI stays bottom */
+    .hero-orbit.show-websites .hero-backdrop {
+        width: clamp(180px, 38vw, 260px) !important;
+        top: 32% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.88) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-websites .auctus-core-visual {
+        width: clamp(140px, 32vw, 220px) !important;
+        top: 56% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+        z-index: 1 !important;
+    }
+    
+    .hero-orbit.show-websites .ai-core-visual {
+        width: clamp(140px, 32vw, 220px) !important;
+        top: 72% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+        z-index: 1 !important;
+    }
+    
+    /* AI TECH CLICKED - AI core to top, AUCTUS orb to middle, backdrop to bottom */
+    .hero-orbit.show-ai .ai-core-visual {
+        width: clamp(180px, 38vw, 260px) !important;
+        top: 32% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.88) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-ai .auctus-core-visual {
+        width: clamp(140px, 32vw, 220px) !important;
+        top: 56% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+        z-index: 1 !important;
+    }
+    
+    .hero-orbit.show-ai .hero-backdrop {
+        width: clamp(140px, 32vw, 220px) !important;
+        top: 72% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+        z-index: 1 !important;
+    }
+    
+    /* Move info panel up and make room for arrow */
+    .info-panel {
+        min-height: clamp(140px, 18vh, 200px) !important;
+        margin-bottom: clamp(20px, 3vh, 30px);
+    }
+    
+    .info-card {
+        padding: clamp(16px, 2vh, 22px) clamp(18px, 3.5vw, 32px) !important;
+    }
+    
+    .arrow {
+        margin-top: clamp(12px, 2vh, 20px) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    /* DEFAULT STATE - AUCTUS top, WEBSITES middle, AI bottom */
+    .hero-orbit .text-auctus,
+    .hero-orbit.show-auctus .text-auctus {
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+        top: 30% !important;
+    }
+    
+    .hero-orbit .text-websites,
+    .hero-orbit.show-auctus .text-websites {
+        top: 54% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.7) !important;
+        font-size: clamp(1.2rem, 6vw, 2rem) !important;
+    }
+    
+    .hero-orbit .text-ai,
+    .hero-orbit.show-auctus .text-ai {
+        top: 70% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.7) !important;
+        font-size: clamp(1.2rem, 6vw, 2rem) !important;
+    }
+    
+    /* WEBSITES CLICKED - WEBSITES top, AUCTUS middle, AI bottom */
+    .hero-orbit.show-websites .text-websites {
+        top: 30% !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+    }
+    
+    .hero-orbit.show-websites .text-auctus {
+        top: 54% !important;
+        left: 50% !important;
+        opacity: 0.3 !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
+    }
+    
+    .hero-orbit.show-websites .text-ai {
+        top: 70% !important;
+        left: 50% !important;
+        opacity: 0.3 !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
+    }
+    
+    /* AI CLICKED - AI top, AUCTUS middle, WEBSITES bottom */
+    .hero-orbit.show-ai .text-ai {
+        top: 30% !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+    }
+    
+    .hero-orbit.show-ai .text-auctus {
+        top: 54% !important;
+        left: 50% !important;
+        opacity: 0.3 !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
+    }
+    
+    .hero-orbit.show-ai .text-websites {
+        top: 70% !important;
+        left: 50% !important;
+        opacity: 0.3 !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
+    }
+    
+    /* Position visuals - DEFAULT */
+    .auctus-core-visual,
+    .hero-orbit.show-auctus .auctus-core-visual {
+        width: clamp(160px, 42vw, 220px) !important;
+        top: 30% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.85) !important;
+    }
+    
+    .hero-backdrop,
+    .hero-orbit.show-auctus .hero-backdrop {
+        width: clamp(120px, 30vw, 180px) !important;
+        top: 54% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
+        opacity: 0.5 !important;
+    }
+    
+    .ai-core-visual,
+    .hero-orbit.show-auctus .ai-core-visual {
+        width: clamp(120px, 30vw, 180px) !important;
+        top: 70% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
+        opacity: 0.5 !important;
+    }
+    
+    /* WEBSITES CLICKED - visuals */
+    .hero-orbit.show-websites .hero-backdrop {
+        width: clamp(160px, 42vw, 220px) !important;
+        top: 30% !important;
+        transform: translate(-50%, -50%) scale(0.85) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-websites .auctus-core-visual {
+        width: clamp(120px, 30vw, 180px) !important;
+        top: 54% !important;
+        opacity: 0.2 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    .hero-orbit.show-websites .ai-core-visual {
+        width: clamp(120px, 30vw, 180px) !important;
+        top: 70% !important;
+        opacity: 0.2 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    /* AI CLICKED - visuals */
+    .hero-orbit.show-ai .ai-core-visual {
+        width: clamp(160px, 42vw, 220px) !important;
+        top: 30% !important;
+        transform: translate(-50%, -50%) scale(0.85) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-ai .auctus-core-visual {
+        width: clamp(120px, 30vw, 180px) !important;
+        top: 54% !important;
+        opacity: 0.2 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    .hero-orbit.show-ai .hero-backdrop {
+        width: clamp(120px, 30vw, 180px) !important;
+        top: 70% !important;
+        opacity: 0.2 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    /* Move info panel up */
+    .info-panel {
+        min-height: clamp(130px, 16vh, 180px) !important;
+    }
+}
+
+@media (max-width: 450px) {
+    /* DEFAULT STATE - AUCTUS top, WEBSITES middle, AI bottom */
+    .hero-orbit .text-auctus,
+    .hero-orbit.show-auctus .text-auctus {
+        font-size: clamp(1.8rem, 11vw, 2.5rem) !important;
+        top: 28% !important;
+    }
+    
+    .hero-orbit .text-websites,
+    .hero-orbit.show-auctus .text-websites {
+        top: 52% !important;
+        left: 50% !important;
+        font-size: clamp(1rem, 5.5vw, 1.5rem) !important;
+        transform: translate(-50%, -50%) scale(0.7) !important;
+    }
+    
+    .hero-orbit .text-ai,
+    .hero-orbit.show-auctus .text-ai {
+        top: 68% !important;
+        left: 50% !important;
+        font-size: clamp(1rem, 5.5vw, 1.5rem) !important;
+        transform: translate(-50%, -50%) scale(0.7) !important;
+    }
+    
+    /* WEBSITES CLICKED - WEBSITES top, AUCTUS middle, AI bottom */
+    .hero-orbit.show-websites .text-websites {
+        top: 28% !important;
+        transform: translate(-50%, -50%) scale(0.95) !important;
+        font-size: clamp(1.8rem, 11vw, 2.5rem) !important;
+    }
+    
+    .hero-orbit.show-websites .text-auctus {
+        top: 52% !important;
+        left: 50% !important;
+        opacity: 0.28 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+    }
+    
+    .hero-orbit.show-websites .text-ai {
+        top: 68% !important;
+        left: 50% !important;
+        opacity: 0.28 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+    }
+    
+    /* AI CLICKED - AI top, AUCTUS middle, WEBSITES bottom */
+    .hero-orbit.show-ai .text-ai {
+        top: 28% !important;
+        transform: translate(-50%, -50%) scale(0.95) !important;
+        font-size: clamp(1.8rem, 11vw, 2.5rem) !important;
+    }
+    
+    .hero-orbit.show-ai .text-auctus {
+        top: 52% !important;
+        left: 50% !important;
+        opacity: 0.28 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+    }
+    
+    .hero-orbit.show-ai .text-websites {
+        top: 68% !important;
+        left: 50% !important;
+        opacity: 0.28 !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+    }
+    
+    /* Position visuals directly behind text - DEFAULT */
+    .auctus-core-visual,
+    .hero-orbit.show-auctus .auctus-core-visual {
+        width: clamp(140px, 45vw, 200px) !important;
+        top: 28% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.8) !important;
+    }
+    
+    .hero-backdrop,
+    .hero-orbit.show-auctus .hero-backdrop {
+        width: clamp(100px, 28vw, 160px) !important;
+        top: 52% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+        opacity: 0.45 !important;
+    }
+    
+    .ai-core-visual,
+    .hero-orbit.show-auctus .ai-core-visual {
+        width: clamp(100px, 28vw, 160px) !important;
+        top: 68% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+        opacity: 0.45 !important;
+    }
+    
+    /* WEBSITES CLICKED - visuals */
+    .hero-orbit.show-websites .hero-backdrop {
+        width: clamp(140px, 45vw, 200px) !important;
+        top: 28% !important;
+        transform: translate(-50%, -50%) scale(0.8) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-websites .auctus-core-visual {
+        width: clamp(100px, 28vw, 160px) !important;
+        top: 52% !important;
+        opacity: 0.18 !important;
+        transform: translate(-50%, -50%) scale(0.45) !important;
+    }
+    
+    .hero-orbit.show-websites .ai-core-visual {
+        width: clamp(100px, 28vw, 160px) !important;
+        top: 68% !important;
+        opacity: 0.18 !important;
+        transform: translate(-50%, -50%) scale(0.45) !important;
+    }
+    
+    /* AI CLICKED - visuals */
+    .hero-orbit.show-ai .ai-core-visual {
+        width: clamp(140px, 45vw, 200px) !important;
+        top: 28% !important;
+        transform: translate(-50%, -50%) scale(0.8) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-ai .auctus-core-visual {
+        width: clamp(100px, 28vw, 160px) !important;
+        top: 52% !important;
+        opacity: 0.18 !important;
+        transform: translate(-50%, -50%) scale(0.45) !important;
+    }
+    
+    .hero-orbit.show-ai .hero-backdrop {
+        width: clamp(100px, 28vw, 160px) !important;
+        top: 68% !important;
+        opacity: 0.18 !important;
+        transform: translate(-50%, -50%) scale(0.45) !important;
+    }
+    
+    /* Move info panel up */
+    .info-panel {
+        min-height: clamp(120px, 14vh, 160px) !important;
+    }
+}
+
+@media (max-width: 380px) {
+    /* DEFAULT STATE - AUCTUS top, WEBSITES middle, AI bottom */
+    .hero-orbit .text-auctus,
+    .hero-orbit.show-auctus .text-auctus {
+        top: 26% !important;
+    }
+    
+    .hero-orbit .text-websites,
+    .hero-orbit.show-auctus .text-websites {
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+    }
+    
+    .hero-orbit .text-ai,
+    .hero-orbit.show-auctus .text-ai {
+        left: 50% !important;
+        top: 66% !important;
+        transform: translate(-50%, -50%) scale(0.65) !important;
+    }
+    
+    /* WEBSITES CLICKED - WEBSITES top, AUCTUS middle, AI bottom */
+    .hero-orbit.show-websites .text-websites {
+        top: 26% !important;
+        transform: translate(-50%, -50%) scale(0.9) !important;
+    }
+    
+    .hero-orbit.show-websites .text-auctus {
+        top: 50% !important;
+        left: 50% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    .hero-orbit.show-websites .text-ai {
+        top: 66% !important;
+        left: 50% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    /* AI CLICKED - AI top, AUCTUS middle, WEBSITES bottom */
+    .hero-orbit.show-ai .text-ai {
+        top: 26% !important;
+        transform: translate(-50%, -50%) scale(0.9) !important;
+    }
+    
+    .hero-orbit.show-ai .text-auctus {
+        top: 50% !important;
+        left: 50% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    .hero-orbit.show-ai .text-websites {
+        top: 66% !important;
+        left: 50% !important;
+        opacity: 0.25 !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    
+    /* Position visuals directly behind text - DEFAULT */
+    .auctus-core-visual,
+    .hero-orbit.show-auctus .auctus-core-visual {
+        top: 26% !important;
+    }
+    
+    .hero-backdrop,
+    .hero-orbit.show-auctus .hero-backdrop {
+        width: clamp(90px, 26vw, 140px) !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+        opacity: 0.4 !important;
+    }
+    
+    .ai-core-visual,
+    .hero-orbit.show-auctus .ai-core-visual {
+        width: clamp(90px, 26vw, 140px) !important;
+        top: 66% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.5) !important;
+        opacity: 0.4 !important;
+    }
+    
+    /* WEBSITES CLICKED - visuals */
+    .hero-orbit.show-websites .hero-backdrop {
+        width: clamp(120px, 38vw, 180px) !important;
+        top: 26% !important;
+        transform: translate(-50%, -50%) scale(0.75) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-websites .auctus-core-visual {
+        width: clamp(90px, 26vw, 140px) !important;
+        top: 50% !important;
+        opacity: 0.15 !important;
+        transform: translate(-50%, -50%) scale(0.4) !important;
+    }
+    
+    .hero-orbit.show-websites .ai-core-visual {
+        width: clamp(90px, 26vw, 140px) !important;
+        top: 66% !important;
+        opacity: 0.15 !important;
+        transform: translate(-50%, -50%) scale(0.4) !important;
+    }
+    
+    /* AI CLICKED - visuals */
+    .hero-orbit.show-ai .ai-core-visual {
+        width: clamp(120px, 38vw, 180px) !important;
+        top: 26% !important;
+        transform: translate(-50%, -50%) scale(0.75) !important;
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+    
+    .hero-orbit.show-ai .auctus-core-visual {
+        width: clamp(90px, 26vw, 140px) !important;
+        top: 50% !important;
+        opacity: 0.15 !important;
+        transform: translate(-50%, -50%) scale(0.4) !important;
+    }
+    
+    .hero-orbit.show-ai .hero-backdrop {
+        width: clamp(90px, 26vw, 140px) !important;
+        top: 66% !important;
+        opacity: 0.15 !important;
+        transform: translate(-50%, -50%) scale(0.4) !important;
+    }
+    
+    /* Move info panel up */
+    .info-panel {
+        min-height: clamp(110px, 12vh, 150px) !important;
+    }
+}
+
+/* Short screen height adjustments */
 @media (max-height: 700px) {
     .animation-container {
         padding: clamp(8px, 1.2vh, 12px) clamp(16px, 2.5vw, 40px);
@@ -1170,6 +1898,10 @@ body {
         width: clamp(130px, 20vw, 200px);
     }
 }
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
 
 @keyframes orbRotate {
     from {

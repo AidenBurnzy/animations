@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // 3D Carousel Timeline with Interactive Globe Rotation
-    if (timelineContainer && timelineItems.length) {
+    if (timelineContainer && timelineItems.length && window.innerWidth > 1024) {
         let rotationX = 0;
         let rotationY = 0;
         let targetRotationX = 0;
@@ -301,6 +301,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Mouse/Touch drag handlers
         function handleDragStart(e) {
+            if (window.innerWidth <= 1024) {
+                timelineContainer.style.cursor = 'auto';
+                return;
+            }
             isDragging = true;
             startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
             startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
@@ -458,6 +462,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Set cursor style
         timelineContainer.style.cursor = 'grab';
+    } else if (timelineContainer) {
+        timelineContainer.style.removeProperty('transform');
+        timelineContainer.style.cursor = 'auto';
     }
     
     // Pricing Toggle

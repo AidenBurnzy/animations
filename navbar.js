@@ -30,10 +30,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             body.classList.add('has-glass-nav--offset');
         }
 
-        const toggle = nav.querySelector('[data-nav-toggle]');
-        const menu = nav.querySelector('[data-nav-menu]');
-        const focusableMenuItem = menu ? menu.querySelector('a, button') : null;
-        const contactLinks = nav.querySelectorAll('.glass-nav__link');
+
+    const toggle = nav.querySelector('.glass-nav__link--contact-dropdown');
+    const menu = nav.querySelector('[data-nav-menu]');
+    const focusableMenuItem = menu ? menu.querySelector('a, button') : null;
+    const contactLinks = menu ? menu.querySelectorAll('a') : [];
 
         const closeMenu = ({ shouldFocusToggle = false } = {}) => {
             if (!nav.classList.contains('is-open')) {
@@ -78,6 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 openMenu();
             }
         };
+
 
         toggle?.addEventListener('click', (event) => {
             event.stopPropagation();
