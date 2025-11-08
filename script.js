@@ -7,7 +7,7 @@ const infoCards = {
     auctus: document.getElementById('auctus-desc')
 };
 const mobileDetailContainer = document.getElementById('mobileDetail');
-const mobileDetailContent = document.getElementById('mobileDetailContent');
+const mobileDetailContent = mobileDetailContainer;
 
 const pageMap = {
     websites: 'websites.html',
@@ -94,7 +94,7 @@ function isMobileLayout() {
     return mobileDetailQuery.matches;
 }
 
-const MOBILE_EXCLUDED_SELECTORS = ['#navbar-placeholder', '.quick-links-bar', 'script', 'link', 'style', 'canvas'];
+const MOBILE_EXCLUDED_SELECTORS = ['#navbar-placeholder', '.quick-links-bar', '#ai-chat-widget', 'script', 'link', 'style', 'canvas'];
 
 function shouldExcludeNode(node) {
     if (!node || typeof node.matches !== 'function') {
