@@ -60,7 +60,7 @@ body {
     --ai-focus-core-scale: 0.98;
     --auctus-focus-scale: 1.08;
     --auctus-focus-core-scale: 0.98;
-    --ai-focus-lift: -12px;
+    --ai-focus-lift: -6px;
     --auctus-focus-lift: -12px;
     position: relative;
     width: min(90%, 740px);
@@ -1081,21 +1081,24 @@ body {
     .animation-container {
         height: auto;
         min-height: calc(100vh - var(--glass-nav-offset, 110px));
-        justify-content: space-between;
-        gap: clamp(20px, 5vh, 28px);
-        padding: clamp(12px, 2.5vh, 20px) clamp(20px, 5vw, 32px) clamp(16px, 4vh, 24px);
+        justify-content: flex-start;
+        gap: clamp(18px, 5vh, 32px);
+        padding: clamp(12px, 2.5vh, 20px) clamp(20px, 5vw, 32px) clamp(24px, 6vh, 48px);
     }
 
     .info-panel {
         width: 100%;
         align-self: stretch;
+        margin-top: clamp(16px, 4vh, 32px);
+        margin-bottom: clamp(16px, 4vh, 32px);
     }
 
     .hero-orbit {
         height: auto;
-        min-height: clamp(340px, 56vh, 480px);
+        min-height: clamp(320px, 50vh, 460px);
         flex: 1 1 auto;
         aspect-ratio: auto;
+        margin-top: clamp(12px, 3vh, 24px);
     }
     
     /* DEFAULT STATE - AUCTUS top, WEBSITES middle, AI bottom */
