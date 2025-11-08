@@ -224,7 +224,7 @@
 }
 
 body.has-glass-nav--offset {
-    padding-top: 0;
+    padding-top: var(--glass-nav-offset, 110px);
 }
 
 /* Quick Links Bar - ADD THIS ENTIRE BLOCK */
