@@ -35,7 +35,7 @@
     z-index: 1000;
     display: flex;
     justify-content: center;
-    pointer-events: none;
+    pointer-events: auto;
     padding: 0;
 }
 
@@ -390,11 +390,5 @@ body.has-glass-nav--offset {
     .glass-nav__sheet .glass-nav__link {
         justify-content: flex-start;
         width: 100%;
-    }
-}
-
-@media (min-width: 721px) {
-    .glass-nav__sheet {
-        display: none;
     }
 }
