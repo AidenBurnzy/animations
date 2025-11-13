@@ -348,7 +348,7 @@ body {
 }
 
 .hero-orbit.show-ai .ai-core-visual {
-    transform: translate(-50%, calc(-50% + var(--ai-focus-lift))) scale(var(--ai-focus-core-scale));
+    transform: translate(-50%, calc(-50% + var(--ai-focus-lift))) scale(var(--ai-core-scale));
     opacity: 0.96;
     visibility: visible;
     z-index: 4;

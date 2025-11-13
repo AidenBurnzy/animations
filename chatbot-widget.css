@@ -426,6 +426,10 @@
         max-height: 600px;
         right: max(16px, var(--safe-area-right, 16px));
         bottom: calc(85px + var(--safe-area-bottom, 0px));
+        position: fixed;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 
     #chat-button {
@@ -451,6 +455,10 @@
         max-height: calc(100dvh - 140px - var(--safe-area-top, 0px) - var(--safe-area-bottom, 0px));
         right: max(10px, var(--safe-area-right, 10px));
         bottom: calc(75px + var(--safe-area-bottom, 0px));
+        position: fixed;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 
     #chat-button {

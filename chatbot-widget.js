@@ -15,7 +15,10 @@ const typingIndicator = document.getElementById('typing-indicator');
 chatButton.addEventListener('click', () => {
     chatWindow.classList.add('active');
     chatButton.style.display = 'none';
-    chatInput.focus();
+    // Only auto-focus on desktop, not mobile
+    if (window.innerWidth > 768) {
+        chatInput.focus();
+    }
 });
 
 closeChat.addEventListener('click', () => {

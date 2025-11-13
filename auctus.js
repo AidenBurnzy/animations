@@ -138,7 +138,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 current = target;
                 clearInterval(timer);
             }
-            element.textContent = template.replace('0', Math.floor(current));
+            
+            // Determine the format based on template
+            const formattedValue = Math.floor(current);
+            if (template.includes('%')) {
+                element.textContent = formattedValue + '%';
+            } else if (template.includes('/')) {
+                element.textContent = formattedValue + '/7';
+            } else if (template.includes('+')) {
+                element.textContent = formattedValue + '+';
+            } else {
+                element.textContent = formattedValue.toString();
+            }
         }, stepTime);
     }
     
@@ -472,20 +483,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const websitesPricing = document.getElementById('websitesPricing');
     const aiPricing = document.getElementById('aiPricing');
     
+    function switchPricing(targetPricing, activeButton) {
+        pricingButtons.forEach(btn => btn.classList.remove('active'));
+        activeButton.classList.add('active');
+        
+        if (targetPricing === 'websites') {
+            if (websitesPricing) websitesPricing.classList.remove('hidden');
+            if (aiPricing) aiPricing.classList.add('hidden');
+        } else if (targetPricing === 'ai') {
+            if (websitesPricing) websitesPricing.classList.add('hidden');
+            if (aiPricing) aiPricing.classList.remove('hidden');
+        }
+    }
+    
     pricingButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        // Handle both click and touch events
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
             const targetPricing = button.getAttribute('data-pricing');
-            
-            pricingButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            if (targetPricing === 'websites') {
-                websitesPricing.classList.remove('hidden');
-                aiPricing.classList.add('hidden');
-            } else {
-                websitesPricing.classList.add('hidden');
-                aiPricing.classList.remove('hidden');
-            }
+            switchPricing(targetPricing, button);
+        });
+        
+        button.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            const targetPricing = button.getAttribute('data-pricing');
+            switchPricing(targetPricing, button);
         });
     });
     

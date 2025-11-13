@@ -2203,6 +2203,10 @@ body {
         text-align: center;
     }
 
+    .contact-left .section-title {
+        text-align: center;
+    }
+
     .info-item {
         flex-direction: column;
         align-items: center;
