@@ -1,0 +1,207 @@
+/* Loading Screen Styles */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    pointer-events: all;
+}
+
+#loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    border-radius: 12px;
+    box-shadow: inset 0 0 30px rgba(242, 217, 255, 0.6);
+}
+
+/* Background gradient */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #000000 0%, #20005f 100%);
+    z-index: 1;
+}
+
+/* Noise texture overlay */
+.noise-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.figma.com/api/mcp/asset/85baa50b-d306-4c6e-85b2-a08ed35eab30');
+    background-repeat: repeat;
+    opacity: 0.4;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Gradient mesh container */
+.gradient-mesh-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 3;
+}
+
+/* Animated gradient mesh */
+.gradient-mesh {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 0, 255, 0.3) 0%,
+        rgba(138, 43, 226, 0.25) 20%,
+        rgba(75, 0, 130, 0.2) 40%,
+        rgba(0, 0, 255, 0.15) 60%,
+        transparent 80%
+    );
+    animation: gradientMove 8s infinite ease-in-out;
+    filter: blur(80px);
+}
+
+@keyframes gradientMove {
+    0% {
+        transform: translate(-943px, -862px) rotate(221.812deg);
+    }
+    20% {
+        transform: translate(-242px, -199px) rotate(355.412deg);
+    }
+    40% {
+        transform: translate(-864px, -1544px) rotate(118.241deg);
+    }
+    60% {
+        transform: translate(-462px, -580px) rotate(19.859deg);
+    }
+    80% {
+        transform: translate(-394px, -676px) rotate(155.331deg);
+    }
+    100% {
+        transform: translate(-943px, -862px) rotate(221.812deg);
+    }
+}
+
+/* Glass overlay with backdrop blur */
+.glass-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(150px);
+    -webkit-backdrop-filter: blur(150px);
+    background: rgba(255, 255, 255, 0.02);
+    z-index: 4;
+}
+
+/* Content container */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Logo */
+.logo {
+    width: 330px;
+    height: 242px;
+    background-image: url('https://www.figma.com/api/mcp/asset/1698edbd-ec8e-4d9e-80fc-bfe835e80109');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Loading text */
+.loading-text {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 600;
+    font-size: 31.25px;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 0.5px;
+    min-width: 250px;
+}
+
+/* Loading text dot animation */
+@keyframes loadingDots {
+    0%, 100% {
+        content: 'Loading Website';
+    }
+    25% {
+        content: 'Loading Website.';
+    }
+    50% {
+        content: 'Loading Website..';
+    }
+    75% {
+        content: 'Loading Website...';
+    }
+}
+
+.loading-text::after {
+    content: '';
+    animation: textChange 2s infinite;
+}
+
+@keyframes textChange {
+    0%, 24% {
+        content: '';
+    }
+    25%, 49% {
+        content: '.';
+    }
+    50%, 74% {
+        content: '..';
+    }
+    75%, 100% {
+        content: '...';
+    }
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+    .loading-container {
+        border-radius: 0;
+        border: none;
+    }
+    
+    .logo {
+        width: 220px;
+        height: 161px;
+    }
+    
+    .loading-text {
+        font-size: 24px;
+        min-width: 200px;
+    }
+}
+
+/* Prevent body scroll when loading */
+body.loading {
+    overflow: hidden;
+}

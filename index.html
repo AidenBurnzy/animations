@@ -4,12 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>Auctus Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600&display=swap" rel="stylesheet">
+    
+    <!-- Loading Screen CSS - Must load first -->
+    <link rel="stylesheet" href="loading-screen.css">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="navStyles.css">
     <!-- Chatbot CSS -->
     <link rel="stylesheet" href="chatbot-widget.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="background"></div>
+            <div class="noise-texture"></div>
+            <div class="gradient-mesh-container">
+                <div class="gradient-mesh"></div>
+            </div>
+            <div class="glass-overlay"></div>
+            <div class="content">
+                <div class="logo"></div>
+                <div class="loading-text">Loading Website</div>
+            </div>
+        </div>
+    </div>
+    <!-- Loading Screen JavaScript -->
+    <script src="loading-screen.js"></script>
+    
     <div id="navbar-placeholder"></div>
     
     <section class="section">
