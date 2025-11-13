@@ -4,19 +4,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedSections = document.querySelectorAll('.fade-up');
 
     if (animatedSections.length) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
+        // Check if mobile device
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+            // On mobile, show all sections immediately
+            animatedSections.forEach((section) => {
+                section.classList.add('is-visible');
             });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -80px 0px'
-        });
+        } else {
+            // On desktop, use intersection observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -80px 0px'
+            });
 
-        animatedSections.forEach((section) => observer.observe(section));
+            animatedSections.forEach((section) => observer.observe(section));
+        }
     }
 
     const contactForm = document.getElementById('contactForm');
