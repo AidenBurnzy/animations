@@ -3,8 +3,8 @@
 /* Chat Widget Container */
 #ai-chat-widget {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: max(20px, var(--safe-area-bottom, 20px));
+    right: max(20px, var(--safe-area-right, 20px));
     z-index: 9999;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
@@ -419,11 +419,72 @@
 }
 
 /* Mobile Responsive */
+@media (max-width: 768px) {
+    #chat-window {
+        width: calc(100vw - 32px);
+        height: calc(100vh - 160px);
+        max-height: 600px;
+        right: max(16px, var(--safe-area-right, 16px));
+        bottom: calc(85px + var(--safe-area-bottom, 0px));
+    }
+
+    #chat-button {
+        width: 56px;
+        height: 56px;
+    }
+
+    #chat-button svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    #ai-chat-widget {
+        bottom: max(16px, var(--safe-area-bottom, 16px));
+        right: max(16px, var(--safe-area-right, 16px));
+    }
+}
+
 @media (max-width: 480px) {
     #chat-window {
-        width: calc(100vw - 40px);
-        height: calc(100vh - 140px);
-        right: 20px;
-        bottom: 90px;
+        width: calc(100vw - max(20px, var(--safe-area-left, 10px)) - max(20px, var(--safe-area-right, 10px)));
+        height: calc(100dvh - 140px - var(--safe-area-top, 0px) - var(--safe-area-bottom, 0px));
+        max-height: calc(100dvh - 140px - var(--safe-area-top, 0px) - var(--safe-area-bottom, 0px));
+        right: max(10px, var(--safe-area-right, 10px));
+        bottom: calc(75px + var(--safe-area-bottom, 0px));
+    }
+
+    #chat-button {
+        width: 50px;
+        height: 50px;
+    }
+
+    #chat-button svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    #ai-chat-widget {
+        bottom: max(12px, var(--safe-area-bottom, 12px));
+        right: max(12px, var(--safe-area-right, 12px));
+    }
+
+    #chat-header {
+        padding: 16px;
+    }
+
+    #chat-header h3 {
+        font-size: 1rem;
+    }
+
+    #chat-header p {
+        font-size: 0.75rem;
+    }
+
+    #chat-input-container {
+        padding: 12px;
+    }
+
+    #chat-input {
+        font-size: 0.9rem;
     }
 }

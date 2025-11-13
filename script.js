@@ -1,5 +1,4 @@
 const heroOrbit = document.getElementById('heroOrbit');
-const toggleBtn = document.getElementById('nextBtn');
 const textElements = Array.from(document.querySelectorAll('.text'));
 const infoCards = {
     websites: document.getElementById('websites-desc'),
@@ -37,10 +36,6 @@ function applyFocusState(target) {
         }
     }
 
-    if (toggleBtn) {
-        toggleBtn.classList.toggle('is-active', target !== 'auctus');
-    }
-
     Object.entries(infoCards).forEach(([key, card]) => {
         if (card) {
             card.classList.toggle('active', key === target);
@@ -48,16 +43,6 @@ function applyFocusState(target) {
     });
 
     updateMobileDetail(target);
-}
-
-function toggleFocus() {
-    currentStateIndex = (currentStateIndex + 1) % states.length;
-    activeFocus = states[currentStateIndex];
-    applyFocusState(activeFocus);
-}
-
-if (toggleBtn) {
-    toggleBtn.addEventListener('click', toggleFocus);
 }
 
 textElements.forEach((textEl) => {

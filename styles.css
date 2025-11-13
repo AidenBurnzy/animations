@@ -4,9 +4,24 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Safe area insets for notched devices */
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
 .mobile-detail {
     display: none;
     width: 100%;
+    padding: 0 clamp(16px, 4vw, 28px) clamp(24px, 6vh, 48px);
 }
 
 .mobile-detail__page,
@@ -14,6 +29,12 @@
 .mobile-detail .page-body {
     display: block;
     width: 100%;
+    max-width: 100%;
+    padding: clamp(16px, 4vw, 24px);
+    background: rgba(12, 10, 28, 0.6);
+    border-radius: 20px;
+    border: 1px solid rgba(120, 120, 255, 0.15);
+    backdrop-filter: blur(20px);
 }
 
 body {
@@ -21,6 +42,8 @@ body {
     overflow: hidden;
     height: 100vh;
     background: #04010f;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #navbar-placeholder,
@@ -652,6 +675,87 @@ body {
     box-shadow: 0 26px 52px rgba(40, 120, 255, 0.35);
 }
 
+/* Contact CTA Section */
+.contact-cta {
+    width: 100%;
+    max-width: min(100%, 580px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.contact-cta__content {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 20px);
+    padding: clamp(12px, 2vh, 16px) clamp(18px, 3vw, 28px);
+    background: rgba(12, 10, 28, 0.4);
+    border: 1px solid rgba(140, 160, 255, 0.25);
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-cta__content:hover {
+    background: rgba(12, 10, 28, 0.55);
+    border-color: rgba(160, 180, 255, 0.4);
+    box-shadow: 0 12px 40px rgba(80, 120, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.contact-cta__label {
+    font-size: clamp(0.8rem, 1.8vh, 0.95rem);
+    font-weight: 500;
+    color: rgba(220, 225, 255, 0.85);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.contact-cta__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: clamp(8px, 1.5vh, 12px) clamp(16px, 2.5vw, 24px);
+    background: linear-gradient(135deg, rgba(100, 140, 255, 0.5), rgba(140, 100, 255, 0.5));
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 1.8vh, 0.95rem);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 16px rgba(100, 120, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.contact-cta__button:hover {
+    background: linear-gradient(135deg, rgba(120, 160, 255, 0.65), rgba(160, 120, 255, 0.65));
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 24px rgba(120, 140, 255, 0.45);
+    transform: translateX(3px);
+}
+
+.contact-cta__button:active {
+    transform: translateX(1px) scale(0.98);
+}
+
+.contact-cta__icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.contact-cta__button:hover .contact-cta__icon {
+    transform: translateX(3px);
+}
+
 .arrow {
     background: rgba(10, 16, 38, 0.58);
     border: 1px solid rgba(255, 255, 255, 0.28);
@@ -1087,21 +1191,27 @@ body {
         overflow-y: auto;
         height: auto;
         min-height: 100vh;
-        padding-top: var(--glass-nav-offset, 110px);
+        min-height: 100dvh;
+        padding-top: clamp(75px, 10vh, 95px);
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
     }
 
     .section {
         height: auto;
-        min-height: calc(100vh - var(--glass-nav-offset, 110px));
+        min-height: calc(100vh - clamp(75px, 10vh, 95px));
+        min-height: calc(100dvh - clamp(75px, 10vh, 95px));
         overflow: visible;
+        padding-bottom: 20px;
     }
 
     .animation-container {
         height: auto;
-        min-height: calc(100vh - var(--glass-nav-offset, 110px));
+        min-height: calc(100vh - clamp(75px, 10vh, 95px));
+        min-height: calc(100dvh - clamp(75px, 10vh, 95px));
         justify-content: flex-start;
-        gap: clamp(18px, 5vh, 32px);
-        padding: clamp(12px, 2.5vh, 20px) clamp(20px, 5vw, 32px) clamp(24px, 6vh, 48px);
+        gap: clamp(16px, 4vh, 28px);
+        padding: clamp(10px, 2vh, 16px) max(clamp(16px, 4vw, 28px), var(--safe-area-left, 16px)) clamp(20px, 5vh, 40px) max(clamp(16px, 4vw, 28px), var(--safe-area-right, 16px));
     }
 
     .info-panel {
@@ -1111,59 +1221,63 @@ body {
     .mobile-detail {
         display: block;
         width: 100%;
+        margin-top: clamp(20px, 4vh, 32px);
     }
 
     .hero-orbit {
         height: auto;
-        min-height: clamp(320px, 50vh, 460px);
+        min-height: clamp(300px, 45vh, 420px);
         flex: 1 1 auto;
         aspect-ratio: auto;
-        margin-top: clamp(12px, 3vh, 24px);
+        margin-top: clamp(10px, 2vh, 20px);
+        padding: clamp(16px, 4vw, 32px);
+        width: 100%;
+        max-width: 100%;
     }
     
     /* DEFAULT STATE - AUCTUS top, WEBSITES middle, AI bottom */
     .hero-orbit .text-auctus,
     .hero-orbit.show-auctus .text-auctus {
-        top: 38% !important;
+        top: 35% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) scale(1) !important;
         z-index: 10 !important;
         opacity: 1 !important;
-        font-size: clamp(2.2rem, 9vw, 3.5rem) !important;
-        letter-spacing: clamp(0.12rem, 0.4vw, 0.24rem) !important;
+        font-size: clamp(2rem, 8.5vw, 3.2rem) !important;
+        letter-spacing: clamp(0.1rem, 0.35vw, 0.2rem) !important;
     }
     
     .hero-orbit .text-websites,
     .hero-orbit.show-auctus .text-websites {
-        top: 60% !important;
+        top: 58% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.75) !important;
+        transform: translate(-50%, -50%) scale(0.72) !important;
         z-index: 9 !important;
-        opacity: 0.7 !important;
-        font-size: clamp(1.5rem, 7vw, 2.5rem) !important;
-        letter-spacing: clamp(0.1rem, 0.3vw, 0.18rem) !important;
+        opacity: 0.65 !important;
+        font-size: clamp(1.4rem, 6.5vw, 2.3rem) !important;
+        letter-spacing: clamp(0.08rem, 0.25vw, 0.16rem) !important;
     }
     
     .hero-orbit .text-ai,
     .hero-orbit.show-auctus .text-ai {
-        top: 78% !important;
+        top: 76% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.75) !important;
+        transform: translate(-50%, -50%) scale(0.72) !important;
         z-index: 9 !important;
-        opacity: 0.7 !important;
-        font-size: clamp(1.5rem, 7vw, 2.5rem) !important;
-        letter-spacing: clamp(0.1rem, 0.3vw, 0.18rem) !important;
+        opacity: 0.65 !important;
+        font-size: clamp(1.4rem, 6.5vw, 2.3rem) !important;
+        letter-spacing: clamp(0.08rem, 0.25vw, 0.16rem) !important;
     }
     
     /* WEBSITES CLICKED - WEBSITES top, AUCTUS middle, AI bottom */
     .hero-orbit.show-websites .text-websites {
-        top: 38% !important;
+        top: 35% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) scale(1) !important;
         z-index: 10 !important;
         opacity: 1 !important;
-        font-size: clamp(2.2rem, 9vw, 3.5rem) !important;
-        letter-spacing: clamp(0.12rem, 0.4vw, 0.24rem) !important;
+        font-size: clamp(2rem, 8.5vw, 3.2rem) !important;
+        letter-spacing: clamp(0.1rem, 0.35vw, 0.2rem) !important;
     }
     
     .hero-orbit.show-websites .text-auctus {
@@ -1184,13 +1298,13 @@ body {
     
     /* AI TECH CLICKED - AI top, AUCTUS middle, WEBSITES bottom */
     .hero-orbit.show-ai .text-ai {
-        top: 38% !important;
+        top: 35% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) scale(1) !important;
         z-index: 10 !important;
         opacity: 1 !important;
-        font-size: clamp(2.2rem, 9vw, 3.5rem) !important;
-        letter-spacing: clamp(0.12rem, 0.4vw, 0.24rem) !important;
+        font-size: clamp(2rem, 8.5vw, 3.2rem) !important;
+        letter-spacing: clamp(0.1rem, 0.35vw, 0.2rem) !important;
     }
     
     .hero-orbit.show-ai .text-auctus {
@@ -1212,11 +1326,11 @@ body {
     /* AUCTUS orb - DEFAULT at top */
     .auctus-core-visual,
     .hero-orbit.show-auctus .auctus-core-visual {
-        width: clamp(180px, 38vw, 260px) !important;
-        top: 38% !important;
+        width: clamp(160px, 36vw, 240px) !important;
+        top: 35% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.88) !important;
-        opacity: 0.94 !important;
+        transform: translate(-50%, -50%) scale(0.85) !important;
+        opacity: 0.92 !important;
         z-index: 2 !important;
     }
     
@@ -1224,11 +1338,11 @@ body {
     .hero-backdrop,
     .hero-orbit.show-auctus .hero-backdrop {
         display: block !important;
-        width: clamp(140px, 32vw, 220px) !important;
-        top: 60% !important;
+        width: clamp(130px, 30vw, 200px) !important;
+        top: 58% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.65) !important;
-        opacity: 0.5 !important;
+        transform: translate(-50%, -50%) scale(0.62) !important;
+        opacity: 0.48 !important;
         z-index: 1 !important;
     }
     
@@ -1236,67 +1350,67 @@ body {
     .ai-core-visual,
     .hero-orbit.show-auctus .ai-core-visual {
         display: block !important;
-        width: clamp(140px, 32vw, 220px) !important;
-        top: 78% !important;
+        width: clamp(130px, 30vw, 200px) !important;
+        top: 76% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.65) !important;
-        opacity: 0.5 !important;
+        transform: translate(-50%, -50%) scale(0.62) !important;
+        opacity: 0.48 !important;
         z-index: 1 !important;
     }
     
     /* WEBSITES CLICKED - backdrop moves to top, AUCTUS orb to middle, AI stays bottom */
     .hero-orbit.show-websites .hero-backdrop {
-        width: clamp(180px, 38vw, 260px) !important;
-        top: 38% !important;
+        width: clamp(160px, 36vw, 240px) !important;
+        top: 35% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.88) !important;
+        transform: translate(-50%, -50%) scale(0.85) !important;
         opacity: 1 !important;
         z-index: 3 !important;
     }
     
     .hero-orbit.show-websites .auctus-core-visual {
-        width: clamp(140px, 32vw, 220px) !important;
-        top: 60% !important;
-        opacity: 0.25 !important;
-        transform: translate(-50%, -50%) scale(0.55) !important;
+        width: clamp(130px, 30vw, 200px) !important;
+        top: 58% !important;
+        opacity: 0.22 !important;
+        transform: translate(-50%, -50%) scale(0.52) !important;
         z-index: 1 !important;
     }
     
     .hero-orbit.show-websites .ai-core-visual {
-        width: clamp(140px, 32vw, 220px) !important;
-        top: 78% !important;
-        opacity: 0.25 !important;
-        transform: translate(-50%, -50%) scale(0.55) !important;
+        width: clamp(130px, 30vw, 200px) !important;
+        top: 76% !important;
+        opacity: 0.22 !important;
+        transform: translate(-50%, -50%) scale(0.52) !important;
         z-index: 1 !important;
     }
     
     /* AI TECH CLICKED - AI core to top, AUCTUS orb to middle, backdrop to bottom */
     .hero-orbit.show-ai .ai-core-visual {
-        width: clamp(180px, 38vw, 260px) !important;
-        top: 38% !important;
+        width: clamp(160px, 36vw, 240px) !important;
+        top: 35% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.88) !important;
+        transform: translate(-50%, -50%) scale(0.85) !important;
         opacity: 1 !important;
         z-index: 3 !important;
     }
     
     .hero-orbit.show-ai .auctus-core-visual {
-        width: clamp(140px, 32vw, 220px) !important;
-        top: 60% !important;
-        opacity: 0.25 !important;
-        transform: translate(-50%, -50%) scale(0.55) !important;
+        width: clamp(130px, 30vw, 200px) !important;
+        top: 58% !important;
+        opacity: 0.22 !important;
+        transform: translate(-50%, -50%) scale(0.52) !important;
         z-index: 1 !important;
     }
     
     .hero-orbit.show-ai .hero-backdrop {
-        width: clamp(140px, 32vw, 220px) !important;
-        top: 78% !important;
-        opacity: 0.25 !important;
-        transform: translate(-50%, -50%) scale(0.55) !important;
+        width: clamp(130px, 30vw, 200px) !important;
+        top: 76% !important;
+        opacity: 0.22 !important;
+        transform: translate(-50%, -50%) scale(0.52) !important;
         z-index: 1 !important;
     }
     
-    /* Move info panel up and make room for arrow */
+    /* Move info panel up and make room for CTA */
     .info-panel {
         min-height: clamp(140px, 20vh, 190px) !important;
         margin: 0;
@@ -1306,10 +1420,36 @@ body {
         padding: clamp(16px, 2vh, 22px) clamp(18px, 3.5vw, 32px) !important;
     }
     
+    .contact-cta {
+        margin-top: clamp(12px, 3vh, 20px);
+    }
+
+    .contact-cta__content {
+        flex-direction: column;
+        gap: 10px;
+        padding: clamp(14px, 2.5vh, 18px) clamp(20px, 4vw, 28px);
+    }
+
+    .contact-cta__label {
+        font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+    }
+
+    .contact-cta__button {
+        padding: clamp(10px, 2vh, 12px) clamp(18px, 4vw, 24px);
+        font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+    }
+    
     .arrow {
-        width: clamp(44px, 12vw, 48px) !important;
-        height: clamp(44px, 12vw, 48px) !important;
-        margin-top: clamp(8px, 2vh, 16px) !important;
+        width: clamp(48px, 13vw, 52px) !important;
+        height: clamp(48px, 13vw, 52px) !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
+        margin-top: clamp(12px, 3vh, 20px) !important;
+    }
+    
+    .arrow svg {
+        width: clamp(24px, 6vw, 28px) !important;
+        height: clamp(24px, 6vw, 28px) !important;
     }
 }
 
