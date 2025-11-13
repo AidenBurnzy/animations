@@ -324,6 +324,7 @@ body.has-glass-nav--offset {
 
     .glass-nav__logo {
         width: clamp(50px, 12vw, 70px);
+        margin-left: 8px;
     }
 
     .glass-nav__title {
@@ -333,6 +334,7 @@ body.has-glass-nav--offset {
 
 
     .glass-nav__link--contact {
+        margin-right: 8px;
         display: none;
     }
 
@@ -420,6 +422,7 @@ body.has-glass-nav--offset {
 
     .glass-nav__logo {
         width: clamp(45px, 11vw, 60px);
+        margin-left: 6px;
     }
 
     .glass-nav__title {
@@ -431,6 +434,7 @@ body.has-glass-nav--offset {
         padding: 8px 14px;
         font-size: 0.65rem;
         letter-spacing: 0.1rem;
+        margin-right: 6px;
     }
 
     .glass-nav__arrow {

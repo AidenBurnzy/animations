@@ -78,7 +78,7 @@ body {
     max-width: 1200px;
     height: 100vh;
     min-height: 100svh;
-    padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 60px);
+    padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 60px) 0 clamp(20px, 3vw, 60px);
 }
 
 .hero-orbit {
@@ -677,14 +677,15 @@ body {
 
 /* Contact CTA Section */
 .contact-cta {
-    width: 100%;
-    max-width: min(100%, 580px);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: auto;
     padding: 0;
     flex-shrink: 0;
+    margin-bottom: 0;
 }
 
 .contact-cta__content {
@@ -693,11 +694,16 @@ body {
     gap: clamp(12px, 2vw, 20px);
     padding: clamp(12px, 2vh, 16px) clamp(18px, 3vw, 28px);
     background: rgba(12, 10, 28, 0.4);
-    border: 1px solid rgba(140, 160, 255, 0.25);
-    border-radius: 999px;
+    border-top: 1px solid rgba(140, 160, 255, 0.25);
+    border-bottom: 1px solid rgba(140, 160, 255, 0.25);
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
     backdrop-filter: blur(20px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    justify-content: center;
 }
 
 .contact-cta__content:hover {
