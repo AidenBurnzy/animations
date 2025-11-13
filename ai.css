@@ -2091,19 +2091,33 @@ body {
     .slider-container {
         height: auto;
         min-height: 700px;
+        overflow: hidden;
     }
     
     .slide {
-        transform: translateY(50px) scale(0.95);
+        position: absolute;
+        transform: translateX(100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     }
     
     .slide.active {
-        transform: translateY(0) scale(1);
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
     }
     
-    .slide.exit-left,
+    .slide.exit-left {
+        transform: translateX(-100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+    
     .slide.exit-right {
-        transform: translateY(-50px) scale(0.95);
+        transform: translateX(100%);
+        opacity: 0;
+        pointer-events: none;
     }
     
     .slider-arrow {
