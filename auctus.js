@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Animated Stats Counter
     const statCards = document.querySelectorAll('.stat-card');
     const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px'
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
     };
     
     const statsObserver = new IntersectionObserver((entries) => {
@@ -499,16 +499,16 @@ document.addEventListener('DOMContentLoaded', () => {
     pricingButtons.forEach(button => {
         // Handle both click and touch events
         button.addEventListener('click', (e) => {
-            e.preventDefault();
             const targetPricing = button.getAttribute('data-pricing');
             switchPricing(targetPricing, button);
         });
         
-        button.addEventListener('touchend', (e) => {
+        // Use touchstart for better mobile responsiveness
+        button.addEventListener('touchstart', (e) => {
             e.preventDefault();
             const targetPricing = button.getAttribute('data-pricing');
             switchPricing(targetPricing, button);
-        });
+        }, { passive: false });
     });
     
     // FAQ Accordion
