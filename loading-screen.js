@@ -4,6 +4,16 @@
 (function() {
     'use strict';
     
+    // Check if loading screen has already been shown in this session
+    if (sessionStorage.getItem('loadingScreenShown') === 'true') {
+        // Remove loading screen immediately if already shown
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingScreen.remove();
+        }
+        return; // Exit the script
+    }
+    
     // Add loading class to body to prevent scrolling
     document.body.classList.add('loading');
     
@@ -20,6 +30,9 @@
         if (loadingScreen && !loadingScreen.classList.contains('fade-out')) {
             loadingScreen.classList.add('fade-out');
             document.body.classList.remove('loading');
+            
+            // Mark that loading screen has been shown
+            sessionStorage.setItem('loadingScreenShown', 'true');
             
             // Remove from DOM after fade out animation completes
             setTimeout(function() {
