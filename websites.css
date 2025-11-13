@@ -1388,8 +1388,7 @@ body {
     max-width: 1200px;
     margin: 0 auto 48px;
     border-radius: 12px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(120, 140, 255, 0.3);
     background: rgba(10, 15, 30, 0.8);
@@ -1398,12 +1397,13 @@ body {
 
 .theme-iframe {
     width: 100%;
-    height: 500px;
+    height: 700px;
     border: none;
     display: block;
     background: white;
-    border-radius: 12px;
-    pointer-events: auto;
+    pointer-events: none;
+    transform: scale(1);
+    transform-origin: top left;
 }
 
 /* Responsive iframe sizing */
@@ -1424,30 +1424,12 @@ body {
 @media (max-width: 768px) {
     .theme-iframe {
         height: 250px;
-        cursor: pointer;
+        pointer-events: none;
     }
     
     .iframe-container {
         max-width: 100%;
         border-radius: 8px;
-        position: relative;
-    }
-    
-    .iframe-container::before {
-        content: 'Tap to view full site';
-        position: absolute;
-        top: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(139, 92, 246, 0.95);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        z-index: 10;
-        pointer-events: none;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     
     .preview-container {
@@ -1975,30 +1957,59 @@ body {
 }
 
 /* Theme Modal */
-.theme-modal {
-    display: none;
+.modal-trigger {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.theme-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-trigger:checked ~ .theme-modal-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.theme-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    max-width: 100%;
+    height: 85vh;
+    max-height: 85vh;
     z-index: 10000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.modal-trigger:checked ~ .theme-modal {
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .theme-modal-content {
-    position: relative;
     width: 100%;
     height: 100%;
-    max-width: 1400px;
-    max-height: 90vh;
-    background: white;
-    border-radius: 12px;
+    background: #ffffff;
+    border-radius: 16px 16px 0 0;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
 }
 
 .theme-modal-close {
@@ -2023,20 +2034,13 @@ body {
     background: rgba(139, 92, 246, 0.9);
 }
 
-.theme-modal-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-}
-
 @media (max-width: 768px) {
-    .theme-modal {
-        padding: 0;
+    .theme-iframe {
+        height: 500px;
     }
     
-    .theme-modal-content {
-        max-height: 100vh;
-        border-radius: 0;
+    .iframe-container {
+        max-width: 100%;
+        border-radius: 8px;
     }
 }

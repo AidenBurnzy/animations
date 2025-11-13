@@ -17,12 +17,15 @@ body {
     font-family: 'Courier New', Courier, monospace;
     color: #e5e7eb;
     background: var(--darker);
-    overflow-x: hidden;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 /* Navigation */
 .navbar {
-    padding: 1.5rem 3rem;
+    padding: 0.6rem 2rem;
     background: rgba(10, 14, 26, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(6, 182, 212, 0.2);
@@ -70,7 +73,7 @@ body {
 }
 
 .nav-cta {
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1.2rem;
     background: transparent;
     border: 1px solid var(--cyan);
     color: var(--cyan);
@@ -78,6 +81,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
+    font-size: 0.85rem;
 }
 
 .nav-cta:hover {
@@ -88,8 +92,8 @@ body {
 
 /* Hero Section */
 .hero {
-    padding: 6rem 3rem;
-    min-height: 80vh;
+    padding: 2rem 2rem;
+    height: calc(100vh - 48px);
     display: flex;
     align-items: center;
     position: relative;
@@ -118,16 +122,16 @@ body {
 
 .hero-tag {
     color: var(--cyan);
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
     opacity: 0.8;
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.7rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -139,17 +143,17 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 0.9rem;
     color: #9ca3af;
-    margin-bottom: 3rem;
+    margin-bottom: 1.3rem;
     max-width: 600px;
-    line-height: 1.7;
+    line-height: 1.6;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .hero-stats {
     display: flex;
-    gap: 4rem;
+    gap: 2.5rem;
 }
 
 .stat-item {
@@ -157,15 +161,15 @@ body {
 }
 
 .stat-value {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--cyan);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: var(--gray);
     text-transform: uppercase;
     letter-spacing: 0.1em;

@@ -297,14 +297,13 @@
             <div class="preview-container" id="themePreview">
                 <!-- Corporate Theme - Now using actual iframe -->
                 <div class="theme-mockup active" data-theme="corporate">
-                    <div class="iframe-container" onclick="if(window.innerWidth<=768){document.getElementById('themeModal').style.display='flex';document.getElementById('modalIframe').src='designStylesFolder/corporate.html';document.body.style.overflow='hidden';}">
+                    <div class="iframe-container">
                         <iframe 
                             src="designStylesFolder/corporate.html" 
                             frameborder="0" 
-                            scrolling="auto"
+                            scrolling="no"
                             class="theme-iframe"
-                            title="Corporate Theme Example"
-                            allow="">
+                            title="Corporate Theme Example">
                         </iframe>
                     </div>
                     <div class="theme-description">
@@ -315,7 +314,7 @@
 
                 <!-- Creative Theme - Keeping mockup for now -->
                <div class="theme-mockup" data-theme="creative">
-                    <div class="iframe-container" onclick="if(window.innerWidth<=768){document.getElementById('themeModal').style.display='flex';document.getElementById('modalIframe').src='designStylesFolder/creative.html';document.body.style.overflow='hidden';}">
+                    <div class="iframe-container" onclick="var modal=document.getElementById('themeModal');var iframe=document.getElementById('modalIframe');modal.style.display='flex';iframe.src='designStylesFolder/creative.html';document.body.style.overflow='hidden';">
                         <iframe 
                             src="designStylesFolder/creative.html" 
                             frameborder="0" 
@@ -333,7 +332,7 @@
 
                 <!-- Minimal Theme - Keeping mockup for now -->
                 <div class="theme-mockup" data-theme="minimal">
-                    <div class="iframe-container" onclick="if(window.innerWidth<=768){document.getElementById('themeModal').style.display='flex';document.getElementById('modalIframe').src='designStylesFolder/minimal.html';document.body.style.overflow='hidden';}">
+                    <div class="iframe-container" onclick="var modal=document.getElementById('themeModal');var iframe=document.getElementById('modalIframe');modal.style.display='flex';iframe.src='designStylesFolder/minimal.html';document.body.style.overflow='hidden';">
                         <iframe 
                             src="designStylesFolder/minimal.html" 
                             frameborder="0" 
@@ -351,7 +350,7 @@
 
                 <!-- Tech Theme - Keeping mockup for now -->
                 <div class="theme-mockup" data-theme="tech">
-                    <div class="iframe-container" onclick="if(window.innerWidth<=768){document.getElementById('themeModal').style.display='flex';document.getElementById('modalIframe').src='designStylesFolder/tech.html';document.body.style.overflow='hidden';}">
+                    <div class="iframe-container" onclick="var modal=document.getElementById('themeModal');var iframe=document.getElementById('modalIframe');modal.style.display='flex';iframe.src='designStylesFolder/tech.html';document.body.style.overflow='hidden';">
                         <iframe 
                             src="designStylesFolder/tech.html" 
                             frameborder="0" 
@@ -368,18 +367,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Theme Modal -->
-    <div id="themeModal" class="theme-modal" onclick="if(event.target===this){this.style.display='none';document.body.style.overflow='auto';}">
-        <div class="theme-modal-content">
-            <button class="theme-modal-close" onclick="document.getElementById('themeModal').style.display='none';document.body.style.overflow='auto';">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 6L6 18M6 6l12 12"/>
-                </svg>
-            </button>
-            <iframe id="modalIframe" class="theme-modal-iframe" frameborder="0"></iframe>
-        </div>
-    </div>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials-section">
