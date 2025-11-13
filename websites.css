@@ -1104,16 +1104,23 @@ body {
     }
     
     .slide {
+        position: absolute;
         transform: translateY(50px) scale(0.95);
+        opacity: 0;
+        pointer-events: none;
     }
     
     .slide.active {
         transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
     }
     
     .slide.exit-left,
     .slide.exit-right {
         transform: translateY(-50px) scale(0.95);
+        opacity: 0;
+        pointer-events: none;
     }
     
     .slider-arrow {
@@ -1374,7 +1381,7 @@ body {
     max-width: 1200px;
     margin: 0 auto 48px;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(120, 140, 255, 0.3);
     background: rgba(10, 15, 30, 0.8);
@@ -1387,6 +1394,9 @@ body {
     border: none;
     display: block;
     background: white;
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
 }
 
 /* Responsive iframe sizing */
