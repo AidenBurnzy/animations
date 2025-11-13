@@ -246,12 +246,12 @@
         </div>
 
         <!-- Navigation Arrows -->
-        <button class="slider-arrow arrow-prev" aria-label="Previous slide">
+        <button class="slider-arrow arrow-prev" aria-label="Previous slide" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');var prev=(current-1+slides.length)%slides.length;slides[prev].classList.add('active');indicators[prev].classList.add('active');">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M15 18l-6-6 6-6"/>
             </svg>
         </button>
-        <button class="slider-arrow arrow-next" aria-label="Next slide">
+        <button class="slider-arrow arrow-next" aria-label="Next slide" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');var next=(current+1)%slides.length;slides[next].classList.add('active');indicators[next].classList.add('active');">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
             </svg>
@@ -259,9 +259,9 @@
 
         <!-- Slide Indicators -->
         <div class="slide-indicators">
-            <button class="indicator active" data-slide="0"></button>
-            <button class="indicator" data-slide="1"></button>
-            <button class="indicator" data-slide="2"></button>
+            <button class="indicator active" data-slide="0" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');slides[0].classList.add('active');indicators[0].classList.add('active');"></button>
+            <button class="indicator" data-slide="1" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');slides[1].classList.add('active');indicators[1].classList.add('active');"></button>
+            <button class="indicator" data-slide="2" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');slides[2].classList.add('active');indicators[2].classList.add('active');"></button>
         </div>
     </section>
 
@@ -335,7 +335,7 @@
                         <polyline points="17 11 19 13 23 9"/>
                     </svg>
                 </div>
-                <h3>Personalization</h3>
+                <h3>Personal Delivery</h3>
                 <p>Deliver tailored experiences that adapt to individual user preferences and behaviors in real-time.</p>
             </div>
         </div>

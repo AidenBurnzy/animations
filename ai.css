@@ -687,6 +687,11 @@ body {
     }
 }
 
+/* Automation Visual Positioning */
+.automation-visual {
+    margin-top: -80px;
+}
+
 /* Chatbot Visual */
 .chat-interface {
     width: 100%;
