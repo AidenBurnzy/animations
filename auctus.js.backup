@@ -1,5 +1,7 @@
+alert('AUCTUS.JS IS LOADING');
 
 document.addEventListener('DOMContentLoaded', () => {
+    alert('DOM CONTENT LOADED FIRED');
     
     // Scroll-based Navbar and Quick Links Animation
     const navbar = document.getElementById('navbar-placeholder');
@@ -107,20 +109,44 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     }
     
-    // Animated Stats Counter - SIMPLIFIED FOR MOBILE
+    // Animated Stats Counter
     const statCards = document.querySelectorAll('.stat-card');
     
+    alert('Stat cards found: ' + statCards.length);
+    
     if (statCards.length > 0) {
-        // Just animate immediately - no scroll detection
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    alert('Stats animating!');
+                    entry.target.classList.add('counted');
+                    const targetCount = parseInt(entry.target.getAttribute('data-count'));
+                    const numberElement = entry.target.querySelector('.stat-number');
+                    const originalText = numberElement.textContent;
+                    animateCount(numberElement, targetCount, originalText);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        
         statCards.forEach(card => {
-            const targetCount = parseInt(card.getAttribute('data-count'));
-            const numberElement = card.querySelector('.stat-number');
-            const originalText = numberElement.textContent;
+            statsObserver.observe(card);
             
-            // Start animation after a short delay
-            setTimeout(() => {
-                animateCount(numberElement, targetCount, originalText);
-            }, 500);
+            // Fallback: trigger on scroll if observer doesn't fire
+            let hasAnimated = false;
+            window.addEventListener('scroll', () => {
+                if (!hasAnimated && !card.classList.contains('counted')) {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        alert('Stats scroll fallback triggered!');
+                        hasAnimated = true;
+                        card.classList.add('counted');
+                        const targetCount = parseInt(card.getAttribute('data-count'));
+                        const numberElement = card.querySelector('.stat-number');
+                        const originalText = numberElement.textContent;
+                        animateCount(numberElement, targetCount, originalText);
+                    }
+                }
+            });
         });
     }
     
@@ -481,9 +507,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const websitesPricing = document.getElementById('websitesPricing');
     const aiPricing = document.getElementById('aiPricing');
     
+    alert('Pricing buttons found: ' + pricingButtons.length + ', websitesPricing: ' + !!websitesPricing + ', aiPricing: ' + !!aiPricing);
     
     if (pricingButtons.length > 0 && websitesPricing && aiPricing) {
         const switchPricing = (button) => {
+            alert('Switch triggered for: ' + button.getAttribute('data-pricing'));
             const targetPricing = button.getAttribute('data-pricing');
             
             // Update active button
@@ -510,6 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 switchPricing(this);
             });
         });
+        alert('Event listeners attached');
     }
     
     // FAQ Accordion
@@ -774,37 +803,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
-    
-    // STATS COUNTER FIX - ADDED AT END
-    setTimeout(function() {
-        var statCards = document.querySelectorAll('.stat-card');
-        if (statCards.length > 0) {
-            statCards.forEach(function(card) {
-                var targetCount = parseInt(card.getAttribute('data-count'));
-                var numberElement = card.querySelector('.stat-number');
-                var originalText = numberElement.textContent;
-                
-                var current = 0;
-                var increment = targetCount / 60;
-                
-                var timer = setInterval(function() {
-                    current += increment;
-                    if (current >= targetCount) {
-                        current = targetCount;
-                        clearInterval(timer);
-                    }
-                    
-                    var val = Math.floor(current);
-                    if (originalText.indexOf('%') > -1) {
-                        numberElement.textContent = val + '%';
-                    } else if (originalText.indexOf('/') > -1) {
-                        numberElement.textContent = val + '/7';
-                    } else {
-                        numberElement.textContent = val + '+';
-                    }
-                }, 33);
-            });
-        }
-    }, 1000);
     
 });

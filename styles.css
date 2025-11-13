@@ -1391,7 +1391,7 @@ body {
         left: 50% !important;
         transform: translate(-50%, -50%) scale(0.85) !important;
         opacity: 1 !important;
-        z-index: 3 !important;
+        z-index: 2 !important;
     }
     
     .hero-orbit.show-ai .auctus-core-visual {
@@ -1575,7 +1575,7 @@ body {
         top: 36% !important;
         transform: translate(-50%, -50%) scale(0.85) !important;
         opacity: 1 !important;
-        z-index: 3 !important;
+        z-index: 2 !important;
     }
     
     .hero-orbit.show-ai .auctus-core-visual {
@@ -1720,7 +1720,7 @@ body {
         top: 34% !important;
         transform: translate(-50%, -50%) scale(0.8) !important;
         opacity: 1 !important;
-        z-index: 3 !important;
+        z-index: 2 !important;
     }
     
     .hero-orbit.show-ai .auctus-core-visual {

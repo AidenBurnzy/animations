@@ -1549,6 +1549,8 @@ body {
     gap: 16px;
     margin-bottom: clamp(50px, 7vh, 70px);
     flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
 }
 
 .toggle-btn {
@@ -1564,6 +1566,12 @@ body {
     backdrop-filter: blur(10px);
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 11;
+    pointer-events: auto;
 }
 
 .toggle-btn:hover {

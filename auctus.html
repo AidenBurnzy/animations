@@ -115,16 +115,16 @@
                 <h2 class="section-title">Our Mission</h2>
                 <p class="mission-text">We exist to bridge the gap between ambitious visions and digital reality. By combining artistic design with powerful technology, we create experiences that don't just meet expectations—they redefine them.</p>
                 <div class="stats-grid">
-                    <div class="stat-card" data-count="50">
-                        <div class="stat-number">0+</div>
+                    <div class="stat-card" data-count="50" id="stat1">
+                        <div class="stat-number">50+</div>
                         <div class="stat-label">Projects Delivered</div>
                     </div>
-                    <div class="stat-card" data-count="99">
-                        <div class="stat-number">0%</div>
+                    <div class="stat-card" data-count="99" id="stat2">
+                        <div class="stat-number">99%</div>
                         <div class="stat-label">Client Satisfaction</div>
                     </div>
-                    <div class="stat-card" data-count="24">
-                        <div class="stat-number">0/7</div>
+                    <div class="stat-card" data-count="24" id="stat3">
+                        <div class="stat-number">24/7</div>
                         <div class="stat-label">Support Available</div>
                     </div>
                 </div>
@@ -298,8 +298,8 @@
         <p class="section-subtitle">Flexible packages designed to fit your needs and budget</p>
         
         <div class="pricing-toggle">
-            <button class="toggle-btn active" data-pricing="websites">Websites</button>
-            <button class="toggle-btn" data-pricing="ai">AI Solutions</button>
+            <button class="toggle-btn active" id="websitesBtn" onclick="document.getElementById('websitesBtn').classList.add('active');document.getElementById('aiBtn').classList.remove('active');document.getElementById('websitesPricing').classList.remove('hidden');document.getElementById('aiPricing').classList.add('hidden');">Websites</button>
+            <button class="toggle-btn" id="aiBtn" onclick="document.getElementById('aiBtn').classList.add('active');document.getElementById('websitesBtn').classList.remove('active');document.getElementById('aiPricing').classList.remove('hidden');document.getElementById('websitesPricing').classList.add('hidden');">AI Solutions</button>
         </div>
 
         <div class="pricing-grid" id="websitesPricing">
@@ -772,9 +772,8 @@
     </div>
 
     <script defer src="navbar.js"></script>
-    <script src="auctus.js"></script>
-    <!-- Chatbot JavaScript -->
+    <script src="auctus.js?v=7"></script>
     <script src="chatbot-widget.js"></script>
-    
+
 </body>
 </html>
