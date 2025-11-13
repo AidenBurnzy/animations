@@ -224,12 +224,12 @@
         </div>
 
         <!-- Navigation Arrows -->
-        <button class="slider-arrow arrow-prev" aria-label="Previous slide">
+        <button class="slider-arrow arrow-prev" aria-label="Previous slide" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');var prev=(current-1+slides.length)%slides.length;slides[prev].classList.add('active');indicators[prev].classList.add('active');">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M15 18l-6-6 6-6"/>
             </svg>
         </button>
-        <button class="slider-arrow arrow-next" aria-label="Next slide">
+        <button class="slider-arrow arrow-next" aria-label="Next slide" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');var next=(current+1)%slides.length;slides[next].classList.add('active');indicators[next].classList.add('active');">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
             </svg>
@@ -237,9 +237,9 @@
 
         <!-- Slide Indicators -->
         <div class="slide-indicators">
-            <button class="indicator active" data-slide="0"></button>
-            <button class="indicator" data-slide="1"></button>
-            <button class="indicator" data-slide="2"></button>
+            <button class="indicator active" data-slide="0" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');slides[0].classList.add('active');indicators[0].classList.add('active');"></button>
+            <button class="indicator" data-slide="1" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');slides[1].classList.add('active');indicators[1].classList.add('active');"></button>
+            <button class="indicator" data-slide="2" onclick="var slides=document.querySelectorAll('.slide');var indicators=document.querySelectorAll('.indicator');var current=Array.from(slides).findIndex(s=>s.classList.contains('active'));slides[current].classList.remove('active');indicators[current].classList.remove('active');slides[2].classList.add('active');indicators[2].classList.add('active');"></button>
         </div>
     </section>
 
@@ -287,10 +287,10 @@
         <p class="section-subtitle">Every brand is unique. Explore some different styles we can bring to your project.</p>
         
         <div class="theme-toggle">
-            <button class="theme-btn active" data-theme="corporate">Corporate</button>
-            <button class="theme-btn" data-theme="creative">Creative</button>
-            <button class="theme-btn" data-theme="minimal">Minimal</button>
-            <button class="theme-btn" data-theme="tech">Tech</button>
+            <button class="theme-btn active" data-theme="corporate" onclick="var btns=document.querySelectorAll('.theme-btn');var mockups=document.querySelectorAll('.theme-mockup');btns.forEach(b=>b.classList.remove('active'));this.classList.add('active');mockups.forEach(m=>m.classList.remove('active'));document.querySelector('.theme-mockup[data-theme=corporate]').classList.add('active');">Corporate</button>
+            <button class="theme-btn" data-theme="creative" onclick="var btns=document.querySelectorAll('.theme-btn');var mockups=document.querySelectorAll('.theme-mockup');btns.forEach(b=>b.classList.remove('active'));this.classList.add('active');mockups.forEach(m=>m.classList.remove('active'));document.querySelector('.theme-mockup[data-theme=creative]').classList.add('active');">Creative</button>
+            <button class="theme-btn" data-theme="minimal" onclick="var btns=document.querySelectorAll('.theme-btn');var mockups=document.querySelectorAll('.theme-mockup');btns.forEach(b=>b.classList.remove('active'));this.classList.add('active');mockups.forEach(m=>m.classList.remove('active'));document.querySelector('.theme-mockup[data-theme=minimal]').classList.add('active');">Minimal</button>
+            <button class="theme-btn" data-theme="tech" onclick="var btns=document.querySelectorAll('.theme-btn');var mockups=document.querySelectorAll('.theme-mockup');btns.forEach(b=>b.classList.remove('active'));this.classList.add('active');mockups.forEach(m=>m.classList.remove('active'));document.querySelector('.theme-mockup[data-theme=tech]').classList.add('active');">Tech</button>
         </div>
 
         <div class="theme-preview">
@@ -374,7 +374,7 @@
             <div class="testimonial-card">
                 <div class="card-glow"></div>
                 <div class="quote-mark">"</div>
-                <p class="testimonial-text">Auctus transformed our online presence completely. Our new website not only looks incredible but has increased our conversion rate by 240%.</p>
+                <p class="testimonial-text">Working with Auctus was a great experience. They took the time to understand our business and created a website that truly represents our brand. We've gotten great feedback from our customers.</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">
                         <span>SR</span>
@@ -397,7 +397,7 @@
             <div class="testimonial-card">
                 <div class="card-glow"></div>
                 <div class="quote-mark">"</div>
-                <p class="testimonial-text">The attention to detail and creative vision they brought to our project was outstanding. They understood our brand better than we did.</p>
+                <p class="testimonial-text">The team was easy to work with and really nailed the design. They were patient with our revision requests and helped us launch a site we're proud to share with people.</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">
                         <span>SW</span>
@@ -420,7 +420,7 @@
             <div class="testimonial-card">
                 <div class="card-glow"></div>
                 <div class="quote-mark">"</div>
-                <p class="testimonial-text">Professional, responsive, and incredibly talented. They delivered ahead of schedule and the results speak for themselves.</p>
+                <p class="testimonial-text">Great communication throughout the entire process. They delivered on time and were very responsive whenever we had questions. The site looks professional and works smoothly.</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">
                         <span>JH</span>

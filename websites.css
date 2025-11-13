@@ -766,6 +766,7 @@ body {
                 inset 0 0 0 2px rgba(120, 140, 255, 0.1);
     position: relative;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .phone-notch {
@@ -1382,7 +1383,7 @@ body {
 
 .theme-iframe {
     width: 100%;
-    height: 700px;
+    height: 500px;
     border: none;
     display: block;
     background: white;
@@ -1391,7 +1392,7 @@ body {
 /* Responsive iframe sizing */
 @media (max-width: 1024px) {
     .theme-iframe {
-        height: 550px;
+        height: 400px;
     }
     
     .iframe-container {
@@ -1405,7 +1406,7 @@ body {
 
 @media (max-width: 768px) {
     .theme-iframe {
-        height: 450px;
+        height: 350px;
     }
     
     .iframe-container {
