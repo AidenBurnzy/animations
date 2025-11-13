@@ -1126,6 +1126,10 @@ body {
         width: clamp(180px, 25vw, 280px);
     }
     
+    .ai-core-visual .neural-core {
+        width: 100%;
+    }
+    
     .auctus-core-visual {
         width: clamp(180px, 25vw, 280px);
     }
@@ -1389,9 +1393,13 @@ body {
         width: clamp(160px, 36vw, 240px) !important;
         top: 35% !important;
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.85) !important;
-        opacity: 1 !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        opacity: 0.85 !important;
         z-index: 2 !important;
+    }
+    
+    .hero-orbit.show-ai .ai-core-visual .neural-core {
+        width: 100% !important;
     }
     
     .hero-orbit.show-ai .auctus-core-visual {
@@ -1573,9 +1581,13 @@ body {
     .hero-orbit.show-ai .ai-core-visual {
         width: clamp(160px, 42vw, 220px) !important;
         top: 36% !important;
-        transform: translate(-50%, -50%) scale(0.85) !important;
-        opacity: 1 !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        opacity: 0.85 !important;
         z-index: 2 !important;
+    }
+    
+    .hero-orbit.show-ai .ai-core-visual .neural-core {
+        width: 100% !important;
     }
     
     .hero-orbit.show-ai .auctus-core-visual {
@@ -1718,9 +1730,13 @@ body {
     .hero-orbit.show-ai .ai-core-visual {
         width: clamp(140px, 45vw, 200px) !important;
         top: 34% !important;
-        transform: translate(-50%, -50%) scale(0.8) !important;
-        opacity: 1 !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        opacity: 0.85 !important;
         z-index: 2 !important;
+    }
+    
+    .hero-orbit.show-ai .ai-core-visual .neural-core {
+        width: 100% !important;
     }
     
     .hero-orbit.show-ai .auctus-core-visual {
@@ -1947,6 +1963,10 @@ body {
         width: clamp(170px, 24vw, 280px);
     }
     
+    .ai-core-visual .neural-core {
+        width: 100%;
+    }
+    
     .auctus-core-visual {
         width: clamp(170px, 24vw, 280px);
     }
@@ -2018,6 +2038,10 @@ body {
         width: clamp(150px, 22vw, 240px);
     }
     
+    .ai-core-visual .neural-core {
+        width: 100%;
+    }
+    
     .auctus-core-visual {
         width: clamp(150px, 22vw, 240px);
     }
@@ -2087,6 +2111,10 @@ body {
     
     .ai-core-visual {
         width: clamp(130px, 20vw, 200px);
+    }
+    
+    .ai-core-visual .neural-core {
+        width: 100%;
     }
     
     .auctus-core-visual {
