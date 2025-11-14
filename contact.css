@@ -735,19 +735,20 @@ main.contact-shell {
 
     .contact-form-wrapper,
     .meta-panel {
-        width: min(100%, 520px);
+        max-width: 520px;
+        width: min(520px, calc(100% - clamp(28px, 9vw, 56px)));
         margin-inline: auto;
     }
 
     .contact-form-wrapper {
         padding-left: clamp(16px, 4vw, 24px);
-        padding-right: clamp(28px, 8vw, 44px);
+        padding-right: calc(clamp(30px, 9vw, 48px) + env(safe-area-inset-right));
     }
 
     .contact-form {
         width: 100%;
         padding-left: clamp(8px, 3vw, 14px);
-        padding-right: clamp(20px, 7vw, 34px);
+        padding-right: calc(clamp(20px, 7vw, 34px) + env(safe-area-inset-right));
     }
 
     .contact-form .form-group {
