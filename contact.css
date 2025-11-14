@@ -728,16 +728,31 @@ main.contact-shell {
         font-size: 16px; /* Prevents iOS zoom on focus */
         min-height: 48px; /* Larger tap target for mobile */
     }
-}
 
-@media (max-width: 560px) {
+    .contact-form-section {
+        justify-items: center;
+    }
+
+    .contact-form-wrapper,
+    .meta-panel {
+        width: min(100%, 520px);
+        margin-inline: auto;
+    }
+
+    .contact-form-wrapper {
+        padding-left: clamp(16px, 4vw, 24px);
+        padding-right: clamp(28px, 8vw, 44px);
+    }
+
     .contact-form {
-        padding-inline: clamp(12px, 5vw, 24px);
+        width: 100%;
+        padding-left: clamp(8px, 3vw, 14px);
+        padding-right: clamp(20px, 7vw, 34px);
     }
 
     .contact-form .form-group {
-        margin-inline: clamp(8px, 4vw, 16px);
-        padding-inline: 0;
+        width: 100%;
+        margin: 0;
     }
 
     .form-grid {
