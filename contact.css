@@ -732,10 +732,15 @@ main.contact-shell {
 
 @media (max-width: 560px) {
     .contact-form {
-        padding-inline: 6px;
+        padding-inline: clamp(12px, 5vw, 24px);
     }
 
     .contact-form .form-group {
-        padding-inline: clamp(8px, 4vw, 16px);
+        margin-inline: clamp(8px, 4vw, 16px);
+        padding-inline: 0;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 }
