@@ -749,17 +749,17 @@ main.contact-shell {
 
     .contact-form-wrapper {
         padding-left: 18px;
-        padding-right: calc(34px + env(safe-area-inset-right));
+        padding-right: calc(18px + env(safe-area-inset-right));
         padding-left: clamp(16px, 4vw, 24px);
-        padding-right: calc(clamp(30px, 9vw, 48px) + env(safe-area-inset-right));
+        padding-right: calc(clamp(16px, 4vw, 24px) + env(safe-area-inset-right));
     }
 
     .contact-form {
         width: 100%;
         padding-left: 10px;
-        padding-right: calc(24px + env(safe-area-inset-right));
+        padding-right: calc(10px + env(safe-area-inset-right));
         padding-left: clamp(8px, 3vw, 14px);
-        padding-right: calc(clamp(20px, 7vw, 34px) + env(safe-area-inset-right));
+        padding-right: calc(clamp(8px, 3vw, 14px) + env(safe-area-inset-right));
         justify-items: center;
     }
 
