@@ -67,6 +67,26 @@ body {
     padding: 0;
 }
 
+.desktop-interaction-hint {
+    position: fixed;
+    bottom: clamp(32px, 4vh, 64px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(0.55rem, 0.7vw, 0.75rem);
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    font-family: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+    display: none;
+    z-index: 20;
+}
+
+@media (min-width: 768px) {
+    .desktop-interaction-hint {
+        display: block;
+    }
+}
+
 .animation-container {
     display: flex;
     align-items: center;
