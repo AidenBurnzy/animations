@@ -765,6 +765,25 @@ main.contact-shell {
     .contact-form .form-group {
         width: 100%;
         margin: 0;
+        align-items: center;
+    }
+
+    .contact-form .form-group label,
+    .contact-form .form-group input,
+    .contact-form .form-group select,
+    .contact-form .form-group textarea {
+        width: min(100%, 360px);
+        margin-inline: auto;
+    }
+
+    .contact-form .form-group textarea {
+        width: min(100%, 420px);
+    }
+
+    .contact-form .submit-btn {
+        width: min(100%, 280px);
+        justify-content: center;
+        margin-inline: auto;
     }
 
     .form-grid {
