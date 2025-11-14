@@ -729,3 +729,13 @@ main.contact-shell {
         min-height: 48px; /* Larger tap target for mobile */
     }
 }
+
+@media (max-width: 560px) {
+    .contact-form {
+        padding-inline: 6px;
+    }
+
+    .contact-form .form-group {
+        padding-inline: clamp(8px, 4vw, 16px);
+    }
+}
