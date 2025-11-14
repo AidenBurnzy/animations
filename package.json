@@ -1,0 +1,18 @@
+{
+  "name": "auctus-ventures-website",
+  "version": "1.0.0",
+  "description": "Auctus Ventures website with contact form integration",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod",
+    "verify:neon": "node scripts/verify-neon.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.0",
+    "dotenv": "^16.4.5",
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}
