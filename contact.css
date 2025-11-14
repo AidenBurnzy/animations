@@ -760,6 +760,7 @@ main.contact-shell {
         padding-right: calc(24px + env(safe-area-inset-right));
         padding-left: clamp(8px, 3vw, 14px);
         padding-right: calc(clamp(20px, 7vw, 34px) + env(safe-area-inset-right));
+        justify-items: center;
     }
 
     .contact-form .form-group {
@@ -768,12 +769,17 @@ main.contact-shell {
         align-items: center;
     }
 
-    .contact-form .form-group label,
     .contact-form .form-group input,
     .contact-form .form-group select,
     .contact-form .form-group textarea {
         width: min(100%, 360px);
         margin-inline: auto;
+    }
+
+    .contact-form .form-group label {
+        width: min(100%, 360px);
+        margin-inline: auto;
+        align-self: flex-start;
     }
 
     .contact-form .form-group textarea {
