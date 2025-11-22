@@ -98,6 +98,14 @@ body {
      }
 
      @media (max-width: 768px) {
+         html, body {
+             width: 100%;
+             max-width: 100%;
+             margin: 0;
+             padding: 0;
+             overflow-x: hidden;
+         }
+
          body {
              padding-top: 130px;
          }
@@ -131,6 +139,28 @@ body {
          .quick-link {
              font-size: 0.8rem;
              padding: 5px 12px;
+         }
+
+         /* Remove horizontal padding on mobile */
+         .hero-section,
+         .services-section,
+         .showcase-section,
+         .testimonials-section,
+         .cta-section {
+             padding-left: 0;
+             padding-right: 0;
+         }
+
+         /* Make all containers full-width on mobile */
+         .slider-container,
+         .services-grid,
+         .theme-showcase-grid,
+         .testimonials-grid,
+         .hero-content,
+         .cta-content {
+             max-width: 100%;
+             padding-left: 16px;
+             padding-right: 16px;
          }
      }
 
@@ -1087,6 +1117,12 @@ body {
 @media (max-width: 768px) {
     .showcase-slider-section {
         min-height: auto;
+    }
+
+    /* Make containers full-width on mobile */
+    .slider-container {
+        max-width: 100%;
+        padding: 0;
     }
     
     .showcase-header {

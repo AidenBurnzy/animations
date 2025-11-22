@@ -99,6 +99,14 @@ body {
 }
 
 @media (max-width: 768px) {
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
     body {
         padding-top: 130px;
     }
@@ -133,6 +141,37 @@ body {
     .quick-link {
         font-size: 0.8rem;
         padding: 5px 12px;
+    }
+
+    /* Remove horizontal padding on mobile */
+    .hero-section,
+    .mission-section,
+    .services-overview,
+    .values-section,
+    .process-section,
+    .team-section,
+    .testimonials-section,
+    .cta-section,
+    section {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Make all containers full-width on mobile */
+    .hero-content,
+    .mission-content,
+    .section-content,
+    .services-cards,
+    .values-grid,
+    .process-steps,
+    .team-grid,
+    .testimonials-grid,
+    .cta-content,
+    [class*="-grid"],
+    [class*="-container"] {
+        max-width: 100% !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
     }
 }
 
